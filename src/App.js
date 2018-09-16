@@ -18,6 +18,12 @@ const style = {
     fontSize: '.7em',
     color: fontGreySecondary,
   },
+  scanText: {
+    textAlign: 'center',
+    fontSize: '.7em',
+    color: appBlue,
+    paddingBottom: '1em',
+  },
   titleHeader: {
     marginTop: '.25em',
     marginBottom: '.25em',
@@ -34,6 +40,8 @@ const style = {
   },
   icon: {
     paddingTop: '3em',
+    marginBottom: '0',
+    paddingBottom: '0',
   },
 };
 class App extends Component {
@@ -82,14 +90,14 @@ class App extends Component {
             </div>
           </Grid>
           <Grid item xs={9}>
-            <Typography style={style.centerText} variant="subheading">
-              Click the Camera and scan the recipe QR code to begin
+            <Typography style={style.scanText} variant="subheading">
+              Scan A Recipe Code
             </Typography>
           </Grid>
           <Grid item xs={9}>
             <Typography style={style.centerText} variant="subheading">
               No QR code reader?
-              <a> Search the recipe by name</a>
+              <a style={{ color: appBlue }}> Search the recipe by name</a>
             </Typography>
           </Grid>
         </Grid>
