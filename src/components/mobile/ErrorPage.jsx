@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 
 import AppMenuBar from './AppMenuBar';
@@ -39,9 +40,11 @@ class ErrorPage extends Component {
           </Card>
           <Card>
             <CardActions>
-              <Button size="small" style={style.button}>
-                Go Back
-              </Button>
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                <Button size="small" style={style.button}>
+                  Go Back
+                </Button>
+              </Link>
             </CardActions>
           </Card>
         </Card>
