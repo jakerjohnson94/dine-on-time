@@ -10,10 +10,9 @@ import QrReader from 'react-qr-reader';
 
 const style = {
   titleHeader: {
-    marginTop: '.25em',
-    marginBottom: '.25em',
-    color: fontGreyPrimary,
-    fontSize: '2em'
+    marginTop: '.75em',
+    marginBottom: '.75em',
+    color: fontGreyPrimary
   },
   centeredDiv: {
     display: 'flex',
@@ -53,7 +52,7 @@ class QRScanner extends Component {
         <Grid item xs={12}>
           <Typography
             style={style.titleHeader}
-            variant="display3"
+            variant="display2"
             gutterBottom
             align="center"
           >
