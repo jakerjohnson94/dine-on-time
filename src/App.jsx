@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 //user components
 import RootLayout from './components/mobile/RootLayout';
+import QRScannerLayout from './components/mobile/QRScannerLayout';
+
 import ErrorPage from './components/mobile/ErrorPage';
 //user css
 import './App.css';
@@ -14,7 +16,9 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={RootLayout} />
+        <Route exact path="/scanner" component={QRScannerLayout} />
         <Route component={ErrorPage} />
+
       </Switch>
     );
   }
