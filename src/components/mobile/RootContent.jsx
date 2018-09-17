@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // css components
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid, Hidden } from '@material-ui/core';
 import ResponsiveRootSlider from '../ResponsiveRootSlider';
 //local components
 
 // icons
-import qrBtnIcon from '../../resources/qrBtnIcon.svg';
 // local images
+import qrBtnIcon from '../../resources/qrBtnIcon.svg';
 
 //local css
 import '../../App.css';
@@ -26,6 +26,13 @@ const style = {
     fontSize: '.7em',
     color: appBlue,
     paddingBottom: '1em',
+  },
+  scanTextDesktop: {
+    textAlign: 'center',
+    fontSize: '1.2em',
+    color: appBlue,
+    paddingBottom: '1em',
+    paddingTop: '1em',
   },
   titleHeader: {
     marginTop: '.25em',
@@ -53,29 +60,42 @@ class RootContent extends Component {
             Dine on Time
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} lg={7}>
           <ResponsiveRootSlider />
         </Grid>
-
-        <Grid item xs={12}>
-          <div style={style.centerImage}>
-            <Link to="/scanner">
-              <img alt="camera icon" src={qrBtnIcon} />
+        <Hidden lgUp>
+          <Grid item xs={12}>
+            <div style={style.centerImage}>
+              <Link to="/scanner">
+                <img alt="camera icon" src={qrBtnIcon} />
+              </Link>
+            </div>
+            <Link to="/scanner" style={{ textDecoration: 'none' }}>
+              <Typography style={style.scanText} variant="subheading">
+                Scan A Recipe Code
+              </Typography>
             </Link>
-          </div>
-          <Link to="/scanner" style={{ textDecoration: 'none' }}>
-            <Typography style={style.scanText} variant="subheading">
-              Scan A Recipe Code
-            </Typography>
-          </Link>
-        </Grid>
+          </Grid>
 
-        <Grid item xs={9}>
-          <Typography style={style.centerText} variant="subheading">
-            No QR code reader?
-            <a style={style.link}> Search the recipe by name</a>
-          </Typography>
-        </Grid>
+          <Grid item xs={9}>
+            <Typography style={style.centerText} variant="subheading">
+              No QR code reader?
+              <Link to="/recipes/list" style={{ textDecoration: 'none' }}>
+                <a style={style.link}> Search the recipe by name</a>
+              </Link>
+            </Typography>
+          </Grid>
+        </Hidden>
+
+        <Hidden mdDown>
+          <Grid item xs={9}>
+            <Link to="/recipes/list" style={{ textDecoration: 'none' }}>
+              <Typography style={style.scanTextDesktop} variant="h2">
+                Lookup A Recipe
+              </Typography>
+            </Link>
+          </Grid>
+        </Hidden>
       </Grid>
     );
   }

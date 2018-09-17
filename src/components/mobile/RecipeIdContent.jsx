@@ -31,16 +31,20 @@ const style = {
     textAlign: 'center',
   },
   recipeImage: {
-    height: '30vh',
+    height: '27vh',
   },
   description: {
     fontSize: '1em',
   },
   recipeName: {
     textAlign: 'center',
+    paddingTop: '1em',
   },
   ingredientImg: {
-    height: '6em',
+    height: '4.1em',
+  },
+  centeredIngredient: {
+    textAlign: 'center',
   },
 };
 class recipeIdContent extends Component {
@@ -64,7 +68,7 @@ class recipeIdContent extends Component {
               </Grid>
               <Grid item xs={7}>
                 <CardActionArea>
-                  <CardContent>
+                  <CardContent style={{ padding: '.5em' }}>
                     <Typography style={style.description} component="p">
                       {this.props.description || loremIpsum}
                     </Typography>
@@ -74,20 +78,49 @@ class recipeIdContent extends Component {
 
               <Grid item xs>
                 <CardActionArea>
-                  <CardContent>
+                  <CardContent style={{ padding: '.3em' }}>
                     <Grid container>
-                      <Grid xs>
+                      <Grid style={style.centeredIngredient} item xs={6}>
                         <img style={style.ingredientImg} src={chikpeasImg} />
                       </Grid>
-                      <Grid xs>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={eggImg} />
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
                         <p>Chikpeas: 1</p>
                       </Grid>
 
-                      <Grid xs>
-                        <img style={style.ingredientImg} src={eggImg} />
-                      </Grid>
-                      <Grid xs>
+                      <Grid style={style.centeredIngredient} item xs={6}>
                         <p>Egg: 1</p>
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={fetaImg} />
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={garlicImg} />
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p>Feta: 1 block</p>
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p>Garlic: 1 clove</p>
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={gingerImg} />
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={ketchupImg} />
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p>Ginger: 1/2tsp</p>
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p>Ketchup: 1/2tsp</p>
                       </Grid>
                     </Grid>
                   </CardContent>
@@ -98,25 +131,6 @@ class recipeIdContent extends Component {
         </Grid>
       </Grid>
     );
-
-    {
-      /* <React.Fragment>
-        <Grid alignContent="center" alignItems="center" justify="center" container>
-          <Grid item xs={12}>
-            <Typography style={style.header} variant="display2">
-              {this.props.recipeName || 'Recipe Name'}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <div style={style.recipeImg} />
-          </Grid>
-          <Grid item xs={12}>
-            <Paper />
-          </Grid>
-        </Grid>
-      </React.Fragment>
-    ); */
-    }
   }
 }
 

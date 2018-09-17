@@ -31,7 +31,7 @@ const style = {
   },
   avatar: {
     width: '6em',
-    height: '6em',
+    height: '6.5em',
   },
 };
 class ErrorPage extends Component {
@@ -53,10 +53,9 @@ class ErrorPage extends Component {
                 </Grid>
               </Grid>
               <Typography variant="subheading" style={style.subheading}>
-                Check that you are connected to the internet, and that the page you're looking for
-                exists.
+                We probably wrote some bad code, or you're just trying to break our app.
                 <br />
-                If the problem persists, email Bob and tell him to fix it.
+                Either way, slack Bob and tell him to fix this.
               </Typography>
             </CardContent>
           </Card>
