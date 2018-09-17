@@ -81,7 +81,7 @@ class RootContent extends Component {
             <Typography style={style.centerText} variant="subheading">
               No QR code reader?
               <Link to="/recipes/list" style={{ textDecoration: 'none' }}>
-                <a style={style.link}> Search the recipe by name</a>
+                <span style={style.link}> Search the recipe by name</span>
               </Link>
             </Typography>
           </Grid>

@@ -32,12 +32,12 @@ const style = {
     color: appBlue,
   },
   recipeImage: {
-    height: '27vh',
+    height: '25vh',
   },
 
   recipeName: {
     textAlign: 'center',
-    paddingTop: '1em',
+    paddingTop: '.7em',
   },
   recipeDescription: {
     fontSize: '1.2em',
