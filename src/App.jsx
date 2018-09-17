@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 //user components
 import RootLayout from './components/mobile/RootLayout';
+import QRScannerLayout from './components/mobile/QRScannerLayout';
 //user css
 import './App.css';
 //color pallete colors
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={RootLayout} />
+        <Route exact path="/scanner" component={QRScannerLayout} />
       </Switch>
     );
   }
