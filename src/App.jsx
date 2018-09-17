@@ -18,7 +18,6 @@ class App extends Component {
         <Route exact path="/" component={RootLayout} />
         <Route exact path="/scanner" component={QRScannerLayout} />
         <Route component={ErrorPage} />
-
       </Switch>
     );
   }

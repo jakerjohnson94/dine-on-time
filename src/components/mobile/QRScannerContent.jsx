@@ -14,12 +14,18 @@ const style = {
     marginBottom: '.25em',
     color: fontGreyPrimary,
     fontSize: '2em'
+  },
+  centeredDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%'
   }
 };
 
 class QRScanner extends Component {
   state = {
-    delay: 300,
+    delay: 750,
     result: null
   };
 
@@ -53,14 +59,16 @@ class QRScanner extends Component {
           >
             Scan your QR Code
           </Typography>
-          <React.Fragment>
+        </Grid>
+        <Grid item xs={12}>
+          <div style={style.centeredDiv}>
             <QrReader
               delay={this.state.delay}
               onError={this.handleError}
               onScan={this.handleScan}
-              style={{ width: '100%' }}
+              style={{ width: '100%', maxWidth: '500px' }}
             />
-          </React.Fragment>
+          </div>
         </Grid>
       </Grid>
     );
