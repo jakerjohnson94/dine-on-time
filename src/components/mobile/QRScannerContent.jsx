@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import AppMenuBar from './AppMenuBar';
+
 import { Typography, Grid, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
+import { fontGreyPrimary } from '../../resources/colors';
 import QrReader from 'react-qr-reader';
 
 const style = {

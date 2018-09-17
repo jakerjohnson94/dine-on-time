@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 //user components
 import RootLayout from './components/mobile/RootLayout';
+import RecipeIdLayout from './components/mobile/RecipeIdLayout';
 import QRScannerLayout from './components/mobile/QRScannerLayout';
 
 import ErrorPage from './components/mobile/ErrorPage';
@@ -17,6 +18,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={RootLayout} />
         <Route exact path="/scanner" component={QRScannerLayout} />
+        <Route exact path="/recipe" component={RecipeIdLayout} />
         <Route component={ErrorPage} />
       </Switch>
     );
