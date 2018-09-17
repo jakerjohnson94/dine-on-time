@@ -4,16 +4,16 @@ import { Typography, Grid } from '@material-ui/core';
 import Slider from 'react-slick';
 //local components
 // icons
-import cameraIcon from '../resources/camera-icon.svg';
+import cameraIcon from '../../resources/camera-icon.svg';
 // local images
-import recipeImg1 from '../resources/recipeRoot1.jpg';
-import recipeImg2 from '../resources/recipeRoot2.jpg';
-import recipeImg3 from '../resources/recipeRoot3.jpg';
-import recipeImg4 from '../resources/recipeRoot4.jpg';
+import recipeImg1 from '../../resources/recipeRoot1.jpg';
+import recipeImg2 from '../../resources/recipeRoot2.jpg';
+import recipeImg3 from '../../resources/recipeRoot3.jpg';
+import recipeImg4 from '../../resources/recipeRoot4.jpg';
 //local css
-import '../App.css';
+import '../../App.css';
 //color pallette import
-import { appBlue, fontGreyPrimary, fontGreySecondary } from '../resources/colors';
+import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
 //app style
 const style = {
   centerText: {

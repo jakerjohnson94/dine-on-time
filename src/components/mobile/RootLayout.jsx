@@ -9,7 +9,7 @@ import RootContent from './RootContent';
 // local images
 
 //local css
-import '../App.css';
+import '../../App.css';
 //color pallette import
 // import { appBlue, fontGreyPrimary, fontGreySecondary } from '../resources/colors';
 //app style
