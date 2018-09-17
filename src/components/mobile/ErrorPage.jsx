@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+  Avatar,
+  Grid,
+} from '@material-ui/core';
 
 import AppMenuBar from './AppMenuBar';
 import { appBlue, fontGreyPrimary } from '../../resources/colors';
+import bobImg from '../../resources/images/Bob.jpeg';
 const style = {
   subheading: {
     fontSize: '1em',
@@ -12,13 +21,17 @@ const style = {
   title: {
     fontSize: '1.5em',
     color: 'black',
-    paddingBottom: '.5em',
+    paddingBottom: '1em',
   },
   button: {
     color: appBlue,
   },
   card: {
     margin: '1em',
+  },
+  avatar: {
+    width: '6em',
+    height: '6em',
   },
 };
 class ErrorPage extends Component {
@@ -29,12 +42,21 @@ class ErrorPage extends Component {
         <Card style={style.card}>
           <Card>
             <CardContent>
-              <Typography style={style.title} variant="title">
-                We Can't Find That Page
-              </Typography>
+              <Grid container spacing={8} alignItems="flex-end">
+                <Grid item xs={12} sm="auto">
+                  <Avatar alt="Bob" src={bobImg} style={style.avatar} />
+                </Grid>
+                <Grid item xs={12} sm="auto">
+                  <Typography variant="title" style={style.title}>
+                    Chef Bob Can't Find That Page
+                  </Typography>
+                </Grid>
+              </Grid>
               <Typography variant="subheading" style={style.subheading}>
                 Check that you are connected to the internet, and that the page you're looking for
-                exists. If the problem persists, email Bob and tell him to fix it.
+                exists.
+                <br />
+                If the problem persists, email Bob and tell him to fix it.
               </Typography>
             </CardContent>
           </Card>
