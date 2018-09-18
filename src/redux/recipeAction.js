@@ -16,6 +16,7 @@ export function fetchRecipeByID(idFromScanner) {
             .then(res => res.json())
             .then(data => {
                 dispatch(getRecipeByIdResponse(data))
+                console.log(data)
                 return data
             })
     }

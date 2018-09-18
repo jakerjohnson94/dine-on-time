@@ -5,7 +5,7 @@ import {
 
 const initialRecipeState = {
     fetching: false,
-    recipe
+    recipe: ''
 }
 
 export function recipeReducer(state = initialRecipeState, action) {
