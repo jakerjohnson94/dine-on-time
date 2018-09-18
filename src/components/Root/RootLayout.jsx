@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // css components
 
 //local compontens
-import AppMenuBar from './AppMenuBar';
+import AppMenuBar from '../AppMenuBar';
 import RootContent from './RootContent';
 // icons
 

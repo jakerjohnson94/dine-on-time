@@ -10,7 +10,7 @@ import {
   Grid,
 } from '@material-ui/core';
 
-import AppMenuBar from './AppMenuBar';
+import AppMenuBar from '../AppMenuBar';
 import { appBlue, fontGreyPrimary } from '../../resources/colors';
 import bobImg from '../../resources/images/Bob.jpeg';
 const style = {

@@ -1,4 +1,4 @@
-import { appBlue } from '../../resources/colors';
+import { appBlue } from '../resources/colors';
 import React, { Component } from 'react';
 import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { Link } from 'react-router-dom';

@@ -7,7 +7,7 @@ import ResponsiveRootSlider from '../ResponsiveRootSlider';
 
 // icons
 // local images
-import qrBtnIcon from '../../resources/qrBtnIcon.svg';
+import scanButtonIcon from '../../resources/images/qrBtnIcon.svg';
 
 //local css
 import '../../App.css';
@@ -45,7 +45,7 @@ const style = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: '1em',
+    paddingTop: '6em',
   },
   link: {
     color: appBlue,
@@ -63,11 +63,12 @@ class RootContent extends Component {
         <Grid item xs={12} lg={7}>
           <ResponsiveRootSlider />
         </Grid>
+
         <Hidden lgUp>
           <Grid item xs={12}>
             <div style={style.centerImage}>
               <Link to="/scanner">
-                <img alt="camera icon" src={qrBtnIcon} />
+                <img alt="camera icon" src={scanButtonIcon} />
               </Link>
             </div>
             <Link to="/scanner" style={{ textDecoration: 'none' }}>
