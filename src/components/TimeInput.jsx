@@ -3,11 +3,12 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import { appBlue } from '../resources/colors.js';
+import { appBlue, fontGreyPrimary, fontGreySecondary } from '../resources/colors.js';
 
 const style = {
   input: {
     textAlign: 'center',
+    fontColor: fontGreySecondary,
     marginBottom: '.5em',
     alignSelf: 'center',
   },
@@ -16,9 +17,10 @@ const style = {
     flexDirection: 'column',
   },
   title: {
+    fontColor: fontGreyPrimary,
     marginTop: '.5em',
     marginBottom: '.2em',
-    fontSize: '.8em',
+    fontSize: '.9em',
     fontWeight: 'bold',
   },
   paper: {
@@ -45,7 +47,7 @@ class TimeInput extends Component {
     return (
       <React.Fragment>
         <Paper style={style.paper}>
-          <Typography style={style.title} variant="title">
+          <Typography style={style.title} variant="display1">
             What Time Would You Like To Eat?
           </Typography>
           <form style={style.form}>
@@ -58,7 +60,7 @@ class TimeInput extends Component {
             />
           </form>
           <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
-            Tell Me When To Cook
+            Start Cooking
           </Button>
         </Paper>
       </React.Fragment>
