@@ -5,20 +5,19 @@ import { Link } from 'react-router-dom';
 import { fontGreyPrimary } from '../../resources/colors';
 
 import QrReader from 'react-qr-reader';
-import TimeInput from './TimeInput';
 
 const style = {
   titleHeader: {
     marginTop: '.75em',
     marginBottom: '.75em',
     color: fontGreyPrimary,
-    fontSize: '2em'
+    fontSize: '2em',
   },
   centeredDiv: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
   },
   centeredButton: {
     textDecoration: 'none',
@@ -26,21 +25,21 @@ const style = {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginTop: '.5em'
-  }
+    marginTop: '.5em',
+  },
 };
 
 class QRScanner extends Component {
   state = {
     delay: 750,
     result: null,
-    startTime: null
+    startTime: null,
   };
 
   handleScan = data => {
     if (data && data.includes(window.location.host)) {
       this.setState({
-        result: data
+        result: data,
       });
       window.location.replace(data);
     }
@@ -54,19 +53,9 @@ class QRScanner extends Component {
     console.log(this.state);
 
     return (
-      <Grid
-        alignContent="center"
-        alignItems="center"
-        justify="center"
-        container
-      >
+      <Grid alignContent="center" alignItems="center" justify="center" container>
         <Grid item xs={12}>
-          <Typography
-            style={style.titleHeader}
-            variant="display3"
-            gutterBottom
-            align="center"
-          >
+          <Typography style={style.titleHeader} variant="display3" gutterBottom align="center">
             Scan your QR Code
           </Typography>
         </Grid>
@@ -87,8 +76,6 @@ class QRScanner extends Component {
             </Link>
           </div>
         </Grid>
-
-        <TimeInput hoistTime={time => this.setState({ startTime: time })} />
       </Grid>
     );
   }
