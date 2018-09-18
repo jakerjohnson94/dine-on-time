@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Typography,
   Grid,
-  Paper,
   Card,
   CardActionArea,
   CardMedia,
@@ -10,20 +9,20 @@ import {
   Icon,
 } from '@material-ui/core';
 
-import chikpeasImg from '../../resources/images/ingredients/chikpeas.png';
-import eggImg from '../../resources/images/ingredients/egg.png';
-import fetaImg from '../../resources/images/ingredients/feta.png';
+import chikpeasImg from '../../resources/images/recipes/sample/ingredients/chikpeas.png';
+import eggImg from '../../resources/images/recipes/sample/ingredients/egg.png';
+import fetaImg from '../../resources/images/recipes/sample/ingredients/feta.png';
 
-import garlicImg from '../../resources/images/ingredients/garlic.png';
-import gingerImg from '../../resources/images/ingredients/ginger.png';
-import ketchupImg from '../../resources/images/ingredients/ketchup.png';
-import nutsImg from '../../resources/images/ingredients/nuts.png';
-import onionImg from '../../resources/images/ingredients/onion.png';
-import powder2Img from '../../resources/images/ingredients/powder2.png';
-import spice1Img from '../../resources/images/ingredients/spice1.png';
-import spinachImg from '../../resources/images/ingredients/spinach.png';
-import tomatoesImg from '../../resources/images/ingredients/tomatoes.png';
-import recipeImg from '../../resources/images/sample.jpg';
+import garlicImg from '../../resources/images/recipes/sample/ingredients/garlic.png';
+import gingerImg from '../../resources/images/recipes/sample/ingredients/ginger.png';
+import ketchupImg from '../../resources/images/recipes/sample/ingredients/ketchup.png';
+import nutsImg from '../../resources/images/recipes/sample/ingredients/nuts.png';
+import onionImg from '../../resources/images/recipes/sample/ingredients/onion.png';
+// import powder2Img from '../../resources/images/recipes/sample/ingredients/powder2.png';
+// import spice1Img from '../../resources/images/recipes/sample/ingredients/spice1.png';
+// import spinachImg from '../../resources/images/recipes/sample/ingredients/spinach.png';
+// import tomatoesImg from '../../resources/images/recipes/sample/ingredients/tomatoes.png';
+import recipeImg from '../../resources/images/recipes/sample/sample.jpg';
 import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
 
 const style = {

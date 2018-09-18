@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 //middleware
 import { Switch, Route } from 'react-router-dom';
 //user components
-import RootLayout from './components/mobile/RootLayout';
-import RecipeIdLayout from './components/mobile/RecipeIdLayout';
-import QRScannerLayout from './components/mobile/QRScannerLayout';
+import RootLayout from './components/Root/RootLayout';
+import RecipeIdLayout from './components/RecipeId/RecipeIdLayout';
+import QRScannerLayout from './components/QRScanner/QRScannerLayout';
 
-import ErrorPage from './components/mobile/ErrorPage';
+import ErrorPage from './components/Error/ErrorPage';
 //user css
 import './App.css';
 //color pallete colors

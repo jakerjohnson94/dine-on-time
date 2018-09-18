@@ -8,7 +8,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default () => (
   <div>
-    <Carousel showThumbs={false} autoPlay>
+    <Carousel showThumbs={false} infiniteLoop={true} autoPlay>
       <div>
         <img alt="img1" src={recipeImg1} />
       </div>

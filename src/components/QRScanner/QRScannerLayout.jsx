@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AppMenuBar from './AppMenuBar';
+import AppMenuBar from '../AppMenuBar';
 import QRScannerContent from './QRScannerContent';
 
 class QRScannerLayout extends Component {
