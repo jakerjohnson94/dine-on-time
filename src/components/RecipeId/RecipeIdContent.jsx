@@ -8,6 +8,7 @@ import {
   CardContent,
   Icon,
 } from '@material-ui/core';
+import TimeInput from '../TimeInput';
 
 import chikpeasImg from '../../resources/images/recipes/sample/ingredients/chikpeas.png';
 import eggImg from '../../resources/images/recipes/sample/ingredients/egg.png';
@@ -39,7 +40,7 @@ const style = {
     paddingTop: '.7em',
   },
   recipeDescription: {
-    fontSize: '1.2em',
+    fontSize: '.8em',
   },
   ingredientImg: {
     height: '4.1em',
@@ -58,10 +59,11 @@ const style = {
     marginBottom: '.3em',
   },
   recipeInfoList: {
-    marginTop: '3em',
+    marginTop: '2em',
   },
   infoListTitle: {
     marginBottom: '.2em',
+    fontSize: '.7em',
     color: 'black',
     textAlign: 'center',
   },
@@ -69,9 +71,17 @@ const style = {
     marginTop: '0',
     color: fontGreySecondary,
     textAlign: 'center',
+    fontSize: '.7em',
   },
   infoListIcon: {
     textAlign: 'center',
+  },
+  timer: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 };
 class recipeIdContent extends Component {
@@ -94,47 +104,51 @@ class recipeIdContent extends Component {
                 </Typography>
               </Grid>
               <Grid item xs={7}>
-                <CardActionArea style={{ pointerEvents: 'none' }}>
-                  <CardContent style={{ padding: '.7em' }}>
-                    <Typography style={style.recipeDescription} component="p">
-                      {this.props.description ||
-                        'In this dish, fluffy couscous is topped with a hearty vegetable medley, which gets bold flavor from a blend of smoked paprika, cayenne pepper, cinnamon, and more.'}
-                    </Typography>
-                    <Grid item style={style.recipeInfoList} xs={12}>
-                      <Grid container justify="space-around">
-                        <Grid style={style.infoListIcon} item xs={4}>
-                          <Icon>alarm_on</Icon>
-                        </Grid>
-                        <Grid style={style.infoListIcon} item xs={4}>
-                          <Icon>restaurant</Icon>
-                        </Grid>
-                        <Grid style={style.infoListIcon} item xs={4}>
-                          <Icon>local_hospital</Icon>
-                        </Grid>
+                <CardContent>
+                  <Typography style={style.recipeDescription} component="p">
+                    {this.props.description ||
+                      'In this dish, fluffy couscous is topped with a hearty vegetable medley, which gets bold flavor from a blend of smoked paprika, cayenne pepper, cinnamon, and more.'}
+                  </Typography>
+                  <Grid item style={style.recipeInfoList} xs={12}>
+                    <Grid container justify="space-around">
+                      <Grid style={style.infoListIcon} item xs={4}>
+                        <Icon>alarm_on</Icon>
+                      </Grid>
+                      <Grid style={style.infoListIcon} item xs={4}>
+                        <Icon>restaurant</Icon>
+                      </Grid>
+                      <Grid style={style.infoListIcon} item xs={4}>
+                        <Icon>local_hospital</Icon>
+                      </Grid>
 
-                        <Grid item xs={4}>
-                          <p style={style.infoListTitle}>Time: </p>
-                        </Grid>
-                        <Grid item xs={4}>
-                          <p style={style.infoListTitle}>Servings: </p>
-                        </Grid>
-                        <Grid item xs={4}>
-                          <p style={style.infoListTitle}>Nutrition: </p>
-                        </Grid>
+                      <Grid item xs={4}>
+                        <p style={style.infoListTitle}>Time: </p>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <p style={style.infoListTitle}>Servings: </p>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <p style={style.infoListTitle}>Nutrition: </p>
+                      </Grid>
 
-                        <Grid item xs={4}>
-                          <p style={style.infoListInfo}>20 mins</p>
-                        </Grid>
-                        <Grid item xs={4}>
-                          <p style={style.infoListInfo}>2</p>
-                        </Grid>
-                        <Grid item xs={4}>
-                          <p style={style.infoListInfo}>Est. 850 cals </p>
-                        </Grid>
+                      <Grid item xs={4}>
+                        <p style={style.infoListInfo}>20 mins</p>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <p style={style.infoListInfo}>2</p>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <p style={style.infoListInfo}>Est. 850 cals </p>
                       </Grid>
                     </Grid>
-                  </CardContent>
-                </CardActionArea>
+
+                    <Grid item xs={12}>
+                      <div style={style.timer}>
+                        <TimeInput hoistTime={time => this.setState({ startTime: time })} />
+                      </div>
+                    </Grid>
+                  </Grid>
+                </CardContent>
               </Grid>
 
               <Grid item xs>

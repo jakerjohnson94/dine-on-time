@@ -1,10 +1,35 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import { appBlue } from '../resources/colors.js';
 
+const style = {
+  input: {
+    textAlign: 'center',
+    marginBottom: '.5em',
+    alignSelf: 'center',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  title: {
+    marginTop: '.5em',
+    marginBottom: '.2em',
+    fontSize: '.8em',
+    fontWeight: 'bold',
+  },
+  paper: {
+    textAlign: 'center',
+    marginTop: '.5em',
+    padding: '.5em',
+  },
+};
 class TimeInput extends Component {
   state = {
-    startTime: '17:30'
+    startTime: '17:30',
   };
 
   handleTimeChange = event => {
@@ -19,17 +44,23 @@ class TimeInput extends Component {
   render() {
     return (
       <React.Fragment>
-        <form>
-          <TextField
-            onChange={this.handleTimeChange}
-            id="time"
-            type="time"
-            defaultValue="17:30"
-          />
-        </form>
-        <Button variant="contained" onClick={this.buttonOnClick}>
-          Submit
-        </Button>
+        <Paper style={style.paper}>
+          <Typography style={style.title} variant="title">
+            What Time Would You Like To Eat?
+          </Typography>
+          <form style={style.form}>
+            <TextField
+              style={style.input}
+              onChange={this.handleTimeChange}
+              id="time"
+              type="time"
+              defaultValue="17:30"
+            />
+          </form>
+          <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
+            Tell Me When To Cook
+          </Button>
+        </Paper>
       </React.Fragment>
     );
   }
