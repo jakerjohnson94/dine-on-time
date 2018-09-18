@@ -7,6 +7,7 @@ import {
   CardActionArea,
   CardMedia,
   CardContent,
+  Icon,
 } from '@material-ui/core';
 
 import chikpeasImg from '../../resources/images/ingredients/chikpeas.png';
@@ -23,24 +24,55 @@ import spice1Img from '../../resources/images/ingredients/spice1.png';
 import spinachImg from '../../resources/images/ingredients/spinach.png';
 import tomatoesImg from '../../resources/images/ingredients/tomatoes.png';
 import recipeImg from '../../resources/images/sample.jpg';
-const loremIpsum =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
 
 const style = {
   header: {
     textAlign: 'center',
+    color: appBlue,
   },
   recipeImage: {
-    height: '30vh',
+    height: '25vh',
   },
-  description: {
-    fontSize: '1em',
-  },
+
   recipeName: {
     textAlign: 'center',
+    paddingTop: '.7em',
+  },
+  recipeDescription: {
+    fontSize: '1.2em',
   },
   ingredientImg: {
-    height: '6em',
+    height: '4.1em',
+    marginBottom: '.0',
+  },
+  centeredIngredient: {
+    textAlign: 'center',
+  },
+  ingName: {
+    color: fontGreySecondary,
+    marginTop: '0',
+    marginBottom: '.2em',
+  },
+  ingQty: {
+    marginTop: '0',
+    marginBottom: '.3em',
+  },
+  recipeInfoList: {
+    marginTop: '3em',
+  },
+  infoListTitle: {
+    marginBottom: '.2em',
+    color: 'black',
+    textAlign: 'center',
+  },
+  infoListInfo: {
+    marginTop: '0',
+    color: fontGreySecondary,
+    textAlign: 'center',
+  },
+  infoListIcon: {
+    textAlign: 'center',
   },
 };
 class recipeIdContent extends Component {
@@ -59,35 +91,120 @@ class recipeIdContent extends Component {
               </Grid>
               <Grid item xs={12}>
                 <Typography style={style.recipeName} gutterBottom variant="headline">
-                  {this.props.recipeName || 'Recipe Name'}
+                  {this.props.recipeName || 'Moroccan-Style Couscous Bowls'}
                 </Typography>
               </Grid>
               <Grid item xs={7}>
-                <CardActionArea>
-                  <CardContent>
-                    <Typography style={style.description} component="p">
-                      {this.props.description || loremIpsum}
+                <CardActionArea style={{ pointerEvents: 'none' }}>
+                  <CardContent style={{ padding: '.7em' }}>
+                    <Typography style={style.recipeDescription} component="p">
+                      {this.props.description ||
+                        'In this dish, fluffy couscous is topped with a hearty vegetable medley, which gets bold flavor from a blend of smoked paprika, cayenne pepper, cinnamon, and more.'}
                     </Typography>
+                    <Grid item style={style.recipeInfoList} xs={12}>
+                      <Grid container justify="space-around">
+                        <Grid style={style.infoListIcon} item xs={4}>
+                          <Icon>alarm_on</Icon>
+                        </Grid>
+                        <Grid style={style.infoListIcon} item xs={4}>
+                          <Icon>restaurant</Icon>
+                        </Grid>
+                        <Grid style={style.infoListIcon} item xs={4}>
+                          <Icon>local_hospital</Icon>
+                        </Grid>
+
+                        <Grid item xs={4}>
+                          <p style={style.infoListTitle}>Time: </p>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <p style={style.infoListTitle}>Servings: </p>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <p style={style.infoListTitle}>Nutrition: </p>
+                        </Grid>
+
+                        <Grid item xs={4}>
+                          <p style={style.infoListInfo}>20 mins</p>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <p style={style.infoListInfo}>2</p>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <p style={style.infoListInfo}>Est. 850 cals </p>
+                        </Grid>
+                      </Grid>
+                    </Grid>
                   </CardContent>
                 </CardActionArea>
               </Grid>
 
               <Grid item xs>
-                <CardActionArea>
-                  <CardContent>
+                <CardActionArea style={{ pointerEvents: 'none' }}>
+                  <CardContent style={{ padding: '.3em' }}>
                     <Grid container>
-                      <Grid xs>
-                        <img style={style.ingredientImg} src={chikpeasImg} />
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={this.props.ingImg1 || chikpeasImg} />
                       </Grid>
-                      <Grid xs>
-                        <p>Chikpeas: 1</p>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={this.props.ingImg2 || eggImg} />
                       </Grid>
 
-                      <Grid xs>
-                        <img style={style.ingredientImg} src={eggImg} />
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'1 15oz can '}</p>
+                        <p style={style.ingName}> {'Chikpeas'}</p>
                       </Grid>
-                      <Grid xs>
-                        <p>Egg: 1</p>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'2 '}</p>
+                        <p style={style.ingName}>{'Pasture-Raised Eggs '}</p>
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={this.props.ingImg3 || fetaImg} />
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={this.props.ingImg4 || garlicImg} />
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'1 1/2 oz'}</p>
+                        <p style={style.ingName}>{'Feta Cheese'}</p>
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'2 cloves '}</p>
+                        <p style={style.ingName}>{'Garlic'}</p>
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={gingerImg} />
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={ketchupImg} />
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'1 1-Inch piece '}</p>
+                        <p style={style.ingName}>{'Ginger'}</p>
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'1 15-Ounce Can '}</p>
+                        <p style={style.ingName}>{'Crushed Tomatoes'}</p>
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={this.props.ingImg7 || nutsImg} />
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <img style={style.ingredientImg} src={this.props.ingImg8 || onionImg} />
+                      </Grid>
+
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'3 Tbsps '}</p>
+                        <p style={style.ingName}>{'Golden Raisins'}</p>
+                      </Grid>
+                      <Grid style={style.centeredIngredient} item xs={6}>
+                        <p style={style.ingQty}>{'1 '}</p>
+                        <span style={style.ingName}>{'Yellow Onion'}</span>
                       </Grid>
                     </Grid>
                   </CardContent>
@@ -98,25 +215,6 @@ class recipeIdContent extends Component {
         </Grid>
       </Grid>
     );
-
-    {
-      /* <React.Fragment>
-        <Grid alignContent="center" alignItems="center" justify="center" container>
-          <Grid item xs={12}>
-            <Typography style={style.header} variant="display2">
-              {this.props.recipeName || 'Recipe Name'}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <div style={style.recipeImg} />
-          </Grid>
-          <Grid item xs={12}>
-            <Paper />
-          </Grid>
-        </Grid>
-      </React.Fragment>
-    ); */
-    }
   }
 }
 
