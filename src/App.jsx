@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 //user components
 import RootLayout from './components/Root/RootLayout';
 import RecipeIdLayout from './components/RecipeId/RecipeIdLayout';
+import StepLayout from './components/Steps/StepLayout';
 import QRScannerLayout from './components/QRScanner/QRScannerLayout';
 
 import ErrorPage from './components/Error/ErrorPage';
@@ -19,6 +20,7 @@ class App extends Component {
         <Route exact path="/" component={RootLayout} />
         <Route exact path="/scanner" component={QRScannerLayout} />
         <Route exact path="/recipe" component={RecipeIdLayout} />
+        <Route path="/steps" component={StepLayout} />
         <Route component={ErrorPage} />
       </Switch>
     );
