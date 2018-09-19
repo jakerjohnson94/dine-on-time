@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { Typography, Grid, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { fontGreyPrimary } from '../../resources/colors';
+import {connect} from 'react-redux'
+import fetchRecipeById from '../../redux/recipeAction.js'
+
 
 import QrReader from 'react-qr-reader';
 
@@ -36,6 +39,10 @@ class QRScanner extends Component {
     startTime: null,
   };
 
+  componentWillMount(){
+    this.props.fetchRecipe('1')
+  }
+
   handleScan = data => {
     if (data && data.includes(window.location.host)) {
       this.setState({
@@ -50,8 +57,6 @@ class QRScanner extends Component {
   };
 
   render() {
-    console.log(this.state);
-
     return (
       <Grid alignContent="center" alignItems="center" justify="center" container>
         <Grid item xs={12}>
@@ -81,4 +86,16 @@ class QRScanner extends Component {
   }
 }
 
-export default QRScanner;
+const mapStateToProps = state => {
+  return {
+    recipeState: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QRScanner);
