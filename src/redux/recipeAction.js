@@ -5,18 +5,17 @@ const RECIPE_URL = 'https://cryptic-beach-93122.herokuapp.com/'
 
 
 //redux thunk function
-export function fetchRecipeByID(idFromScanner) {
+export default function fetchRecipeByID(idFromScanner) {
     return dispatch => {
 
         //dispatching get recipe by id action creator
         dispatch(getRecipeByIdRequest());
 
         //fetching from API with id from Scanner, placeholder of 1 for now
-        fetch(RECIPE_URL + 'recipe/1') //will be idFromScanner from above
+        fetch(`${RECIPE_URL}recipe/${idFromScanner}`) //will be idFromScanner from above
             .then(res => res.json())
             .then(data => {
                 dispatch(getRecipeByIdResponse(data))
-                console.log(data)
                 return data
             })
     }
