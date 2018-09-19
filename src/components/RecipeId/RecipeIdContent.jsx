@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Typography,
   Grid,
@@ -25,7 +26,7 @@ import onionImg from '../../resources/images/recipes/sample/ingredients/onion.pn
 // import tomatoesImg from '../../resources/images/recipes/sample/ingredients/tomatoes.png';
 import recipeImg from '../../resources/images/recipes/sample/sample.jpg';
 import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
-
+import fetchRecipeById from '../../redux/recipeAction.js';
 const style = {
   header: {
     textAlign: 'center',
@@ -84,8 +85,20 @@ const style = {
     alignItems: 'center',
   },
 };
+
 class recipeIdContent extends Component {
   render() {
+    const handleIngredientFormatting = steps => {
+      const result = [];
+      const isOdd = steps.length % 2 !== 0;
+      let remainder = isOdd ? steps.splice(steps.length - 1, 1) : null;
+      for (let i = 0; i < steps.length; i += 2) {
+        if (steps[i + 1] !== undefined) result.push(steps.slice(i, i + 2));
+      }
+      if (remainder) result.push(remainder);
+      return result;
+    };
+    console.log(this.props);
     return (
       <Grid alignContent="center" alignItems="center" justify="center" container>
         <Grid item xs={12}>
@@ -94,20 +107,20 @@ class recipeIdContent extends Component {
               <Grid item xs={12}>
                 <CardMedia
                   style={style.recipeImage}
-                  image={this.props.recipeImg || recipeImg}
-                  title="Recipe"
+                  image={this.props.recipe.img || null}
+                  title={this.props.recipe.title}
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <Typography style={style.recipeName} gutterBottom variant="headline">
-                  {this.props.recipeName || 'Moroccan-Style Couscous Bowls'}
+                  {this.props.recipe.title || 'RECIPE NOT FOUND'}
                 </Typography>
               </Grid>
               <Grid item xs={7}>
                 <CardContent>
                   <Typography style={style.recipeDescription} component="p">
-                    {this.props.description ||
-                      'In this dish, fluffy couscous is topped with a hearty vegetable medley, which gets bold flavor from a blend of smoked paprika, cayenne pepper, cinnamon, and more.'}
+                    {this.props.recipe.description || '-'}
                   </Typography>
                   <Grid item style={style.recipeInfoList} xs={12}>
                     <Grid container justify="space-around">
@@ -132,13 +145,17 @@ class recipeIdContent extends Component {
                       </Grid>
 
                       <Grid item xs={4}>
-                        <p style={style.infoListInfo}>20 mins</p>
+                        <p style={style.infoListInfo}>
+                          {this.props.recipe.totalPrepTime + this.props.recipe.totalCookTime} mins
+                        </p>
                       </Grid>
                       <Grid item xs={4}>
-                        <p style={style.infoListInfo}>2</p>
+                        <p style={style.infoListInfo}>{this.props.recipe.servings}</p>
                       </Grid>
                       <Grid item xs={4}>
-                        <p style={style.infoListInfo}>Est. 850 cals </p>
+                        <p style={style.infoListInfo}>
+                          Est. {this.props.recipe.estimatedCalories} cals{' '}
+                        </p>
                       </Grid>
                     </Grid>
 
@@ -155,6 +172,7 @@ class recipeIdContent extends Component {
                 <CardActionArea style={{ pointerEvents: 'none' }}>
                   <CardContent style={{ padding: '.3em' }}>
                     <Grid container>
+                      {/* ingredient images */}
                       <Grid style={style.centeredIngredient} item xs={6}>
                         <img style={style.ingredientImg} src={this.props.ingImg1 || chikpeasImg} />
                       </Grid>
@@ -162,63 +180,19 @@ class recipeIdContent extends Component {
                         <img style={style.ingredientImg} src={this.props.ingImg2 || eggImg} />
                       </Grid>
 
+                      {/* {ingredient names} */}
                       <Grid style={style.centeredIngredient} item xs={6}>
                         <p style={style.ingQty}>{'1 15oz can '}</p>
                         <p style={style.ingName}> {'Chikpeas'}</p>
                       </Grid>
-
                       <Grid style={style.centeredIngredient} item xs={6}>
                         <p style={style.ingQty}>{'2 '}</p>
                         <p style={style.ingName}>{'Pasture-Raised Eggs '}</p>
                       </Grid>
 
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <img style={style.ingredientImg} src={this.props.ingImg3 || fetaImg} />
-                      </Grid>
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <img style={style.ingredientImg} src={this.props.ingImg4 || garlicImg} />
-                      </Grid>
-
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <p style={style.ingQty}>{'1 1/2 oz'}</p>
-                        <p style={style.ingName}>{'Feta Cheese'}</p>
-                      </Grid>
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <p style={style.ingQty}>{'2 cloves '}</p>
-                        <p style={style.ingName}>{'Garlic'}</p>
-                      </Grid>
-
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <img style={style.ingredientImg} src={gingerImg} />
-                      </Grid>
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <img style={style.ingredientImg} src={ketchupImg} />
-                      </Grid>
-
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <p style={style.ingQty}>{'1 1-Inch piece '}</p>
-                        <p style={style.ingName}>{'Ginger'}</p>
-                      </Grid>
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <p style={style.ingQty}>{'1 15-Ounce Can '}</p>
-                        <p style={style.ingName}>{'Crushed Tomatoes'}</p>
-                      </Grid>
-
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <img style={style.ingredientImg} src={this.props.ingImg7 || nutsImg} />
-                      </Grid>
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <img style={style.ingredientImg} src={this.props.ingImg8 || onionImg} />
-                      </Grid>
-
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <p style={style.ingQty}>{'3 Tbsps '}</p>
-                        <p style={style.ingName}>{'Golden Raisins'}</p>
-                      </Grid>
-                      <Grid style={style.centeredIngredient} item xs={6}>
-                        <p style={style.ingQty}>{'1 '}</p>
-                        <span style={style.ingName}>{'Yellow Onion'}</span>
-                      </Grid>
+                      {this.props.ingredients.map(ing => (
+                        <div>{ing.name}</div>
+                      ))}
                     </Grid>
                   </CardContent>
                 </CardActionArea>
@@ -231,4 +205,37 @@ class recipeIdContent extends Component {
   }
 }
 
-export default recipeIdContent;
+const mapStateToProps = state => {
+  return {
+    ...state,
+  };
+};
+
+export default connect(mapStateToProps)(recipeIdContent);
+
+// {this.handleIngredientFormatting(this.props.recipe.ingredients).map(
+//   ingredient => (
+//     <React.Fragment>
+//       <Grid style={style.centeredIngredient} item xs={6}>
+//         <img
+//           style={style.ingredientImg}
+//           src={ingredient[0].img || chikpeasImg}
+//         />
+//       </Grid>
+
+//       <Grid style={style.centeredIngredient} item xs={6}>
+//         <img style={style.ingredientImg} src={ingredient[1].img || eggImg} />
+//       </Grid>
+
+//       {/* {ingredient names} */}
+//       <Grid style={style.centeredIngredient} item xs={6}>
+//         <p style={style.ingQty}>{ingredient[0].quantity}</p>
+//         <p style={style.ingName}> {ingredient[0].name}</p>
+//       </Grid>
+//       <Grid style={style.centeredIngredient} item xs={6}>
+//         <p style={style.ingQty}>{ingredient[1].quantity || null}</p>
+//         <p style={style.ingName}>{ingredient[1].name || null}</p>
+//       </Grid>
+//     </React.Fragment>
+//   )
+// )}

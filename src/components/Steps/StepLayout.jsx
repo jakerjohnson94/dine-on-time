@@ -8,12 +8,6 @@ const API = 'https://cryptic-beach-93122.herokuapp.com';
 class StepLayout extends Component {
   state = {};
 
-  componentWillMount() {
-    Axios.get(API + '/recipe/1').then(res => {
-      console.log(res.data);
-      this.setState({ steps: res.data.steps });
-    });
-  }
   render() {
     let steps = this.state.steps || [];
     return (
