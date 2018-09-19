@@ -15,6 +15,9 @@ class StepContent extends Component {
   render() {
     return (
       <React.Fragment>
+        <ul>
+          <li />
+        </ul>
         <Grid container justify="center" alignItems="center">
           <Grid item xs={7}>
             <img src={stepImg} />

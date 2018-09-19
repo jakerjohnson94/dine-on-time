@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // css components
 import { Typography, Grid, Hidden } from '@material-ui/core';
-import ResponsiveRootSlider from '../ResponsiveRootSlider';
+import ResponsiveRootSlider from './ResponsiveSlider';
 //local components
 
 // icons
