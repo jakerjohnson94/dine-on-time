@@ -3,8 +3,14 @@ import React, { Component } from 'react';
 import { Typography, Grid, Button } from '@material-ui/core';
 import { Link, withRouter } from 'react-router-dom';
 import { fontGreyPrimary } from '../../resources/colors';
-import { connect } from 'react-redux';
-import fetchRecipeById from '../../redux/recipeAction.js';
+
+import {connect} from 'react-redux'
+import fetchRecipeById from '../../redux/recipeAction.js'
+import {browserHistory} from 'react-router'
+
+
+
+
 
 import QrReader from 'react-qr-reader';
 
@@ -37,17 +43,22 @@ class QRScanner extends Component {
     result: null,
     startTime: null,
   };
+  
+
 
   componentWillMount() {
     this.props.fetchRecipe('1');
   }
+
 
   handleScan = data => {
     if (data && data.includes(window.location.host)) {
       this.setState({
         result: data,
       });
-      window.location.replace(data);
+      const [id] = data.match(/(\d+)$/g)
+      this.props.fetchRecipe(id)
+      // window.location.replace(data);
     }
   };
 
@@ -97,7 +108,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QRScanner);
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QRScanner));
+
