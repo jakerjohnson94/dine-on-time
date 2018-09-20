@@ -6,8 +6,7 @@ import { fontGreyPrimary } from '../../resources/colors';
 
 import {connect} from 'react-redux'
 import fetchRecipeById from '../../redux/recipeAction.js'
-import {browserHistory} from 'react-router'
-
+import history from '../../history'
 
 
 
@@ -46,19 +45,15 @@ class QRScanner extends Component {
   
 
 
-  componentWillMount() {
-    this.props.fetchRecipe('1');
-  }
-
-
   handleScan = data => {
-    if (data && data.includes(window.location.host)) {
+    if (data) {
       this.setState({
         result: data,
       });
       const [id] = data.match(/(\d+)$/g)
       this.props.fetchRecipe(id)
-      // window.location.replace(data);
+      // const path = new URL(data)
+      // history.push('/recipe')
     }
   };
 
