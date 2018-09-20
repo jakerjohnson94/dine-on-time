@@ -4,7 +4,7 @@ import './index.css';
 import App from './App.jsx';
 import registerServiceWorker from './registerServiceWorker';
 import {
-  BrowserRouter
+  Router
 } from 'react-router-dom';
 import {
   Provider
@@ -12,12 +12,13 @@ import {
 import {
   store
 } from './redux/store'
+import history from './history'
 
 ReactDOM.render(
   <Provider store = {store} >
-    <BrowserRouter >
+    <Router history={history}>
       <App/>
-    </BrowserRouter>     
+    </Router>     
   </Provider>,
   document.getElementById('root')
 );

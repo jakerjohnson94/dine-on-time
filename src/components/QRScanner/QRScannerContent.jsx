@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-
 import { Typography, Grid, Button } from '@material-ui/core';
 import { Link, withRouter } from 'react-router-dom';
 import { fontGreyPrimary } from '../../resources/colors';
-
-import {connect} from 'react-redux'
-import fetchRecipeById from '../../redux/recipeAction.js'
-import {browserHistory} from 'react-router'
-
-
-
-
+import { connect } from 'react-redux';
+import fetchRecipeById from '../../redux/recipeAction.js';
 
 import QrReader from 'react-qr-reader';
 
@@ -19,13 +12,13 @@ const style = {
     marginTop: '.75em',
     marginBottom: '.75em',
     color: fontGreyPrimary,
-    fontSize: '2em',
+    fontSize: '2em'
   },
   centeredDiv: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+    width: '100%'
   },
   centeredButton: {
     textDecoration: 'none',
@@ -33,32 +26,24 @@ const style = {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginTop: '.5em',
-  },
+    marginTop: '.5em'
+  }
 };
 
 class QRScanner extends Component {
   state = {
     delay: 750,
     result: null,
-    startTime: null,
+    startTime: null
   };
-  
-
-
-  componentWillMount() {
-    this.props.fetchRecipe('1');
-  }
-
 
   handleScan = data => {
-    if (data && data.includes(window.location.host)) {
+    if (data) {
       this.setState({
-        result: data,
+        result: data
       });
-      const [id] = data.match(/(\d+)$/g)
-      this.props.fetchRecipe(id)
-      // window.location.replace(data);
+      const [id] = data.match(/(\d+)$/g);
+      this.props.fetchRecipe(id);
     }
   };
 
@@ -68,9 +53,19 @@ class QRScanner extends Component {
 
   render() {
     return (
-      <Grid alignContent="center" alignItems="center" justify="center" container>
+      <Grid
+        alignContent="center"
+        alignItems="center"
+        justify="center"
+        container
+      >
         <Grid item xs={12}>
-          <Typography style={style.titleHeader} variant="display3" gutterBottom align="center">
+          <Typography
+            style={style.titleHeader}
+            variant="display3"
+            gutterBottom
+            align="center"
+          >
             Scan your QR Code
           </Typography>
         </Grid>
@@ -98,16 +93,19 @@ class QRScanner extends Component {
 
 const mapStateToProps = state => {
   return {
-    ...state,
+    ...state
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId)),
+    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId))
   };
 };
 
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QRScanner));
-
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(QRScanner)
+);

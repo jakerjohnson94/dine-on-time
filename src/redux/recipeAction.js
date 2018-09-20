@@ -1,3 +1,6 @@
+import history from '../history'
+
+
 export const GET_RECIPE_BY_ID_REQUEST = 'GET_RECIPE_BY_ID_REQUEST'
 export const GET_RECIPE_BY_ID_RESPONSE = 'GET_RECIPE_BY_ID_RESPONSE'
 
@@ -16,6 +19,7 @@ export default function fetchRecipeByID(idFromScanner) {
             .then(res => res.json())
             .then(data => {
                 dispatch(getRecipeByIdResponse(data))
+                history.push('/recipe')
                 return data
             })
     }
