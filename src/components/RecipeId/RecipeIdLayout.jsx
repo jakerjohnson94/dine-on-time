@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import RecipeIdContent from './RecipeIdContent';
 import { connect } from 'react-redux';
+import ReactLoading from 'react-loading';
+import { appBlue } from '../../resources/colors';
 import AppMenuBar from '../AppMenuBar';
 import fetchRecipeById from '../../redux/recipeAction.js';
+
 class RecipeIdLayout extends Component {
   componentWillMount() {
     this.props.fetchRecipe('1');
@@ -12,8 +15,14 @@ class RecipeIdLayout extends Component {
   render() {
     return (
       <React.Fragment>
-        <AppMenuBar />
-        <RecipeIdContent />
+        {this.props.fetching ? (
+          <ReactLoading type={'spin'} color={appBlue} height={'20%'} width={'20%'} style={{position:'absolute', right:'50vw', top:'50vh'}}/>
+        ) : (
+          <React.Fragment>
+            <AppMenuBar />
+            <RecipeIdContent />
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }

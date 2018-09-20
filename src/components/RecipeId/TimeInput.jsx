@@ -49,7 +49,7 @@ class TimeInput extends Component {
       <React.Fragment>
         <Paper style={style.paper}>
           <Typography style={style.title} variant="display1">
-            What Time Would You Like To Eat?
+            When Would You Like To Eat?
           </Typography>
           <form style={style.form}>
             <TextField
@@ -61,7 +61,7 @@ class TimeInput extends Component {
             />
           </form>
           <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
-            Start Cooking
+            Tell Me What to Do
           </Button>
         </Paper>
       </React.Fragment>
