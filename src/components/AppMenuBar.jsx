@@ -1,6 +1,6 @@
 import { appBlue } from '../resources/colors';
 import React, { Component } from 'react';
-import { AppBar, Toolbar, IconButton } from '@material-ui/core';
+import { AppBar, Toolbar, Button, MenuItem, Menu, Icon } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import MenuIcon from '@material-ui/icons/Menu';
@@ -10,16 +10,52 @@ const style = {
   },
 };
 class AppMenuBar extends Component {
+  state = {
+    anchorEl: null,
+  };
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
   render() {
+    const { anchorEl } = this.state;
     return (
       <React.Fragment>
         <AppBar style={style.headerBar} position="static">
           <Toolbar>
-            <Link style={{ color: 'white' }} to={'/'}>
-              <IconButton color="inherit" aria-label="Menu">
-                <MenuIcon />
-              </IconButton>
-            </Link>
+            <div>
+              <Button
+                aria-owns={anchorEl ? 'simple-menu' : null}
+                aria-haspopup="true"
+                onClick={this.handleClick}
+              >
+                <Icon style={{ color: 'white' }}>menu</Icon>
+              </Button>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+              >
+                <MenuItem to="/recipe" component={Link} onClick={this.handleClose}>
+                  Home
+                </MenuItem>
+                <MenuItem to="/recipe" component={Link} onClick={this.handleClose}>
+                  Recipe
+                </MenuItem>
+                <MenuItem to="/steps" onClick={this.handleClose} component={Link}>
+                  Steps
+                </MenuItem>
+                <MenuItem to="/scanner" component={Link} onClick={this.handleClose}>
+                  Scanner
+                </MenuItem>
+              </Menu>
+            </div>
           </Toolbar>
         </AppBar>
       </React.Fragment>

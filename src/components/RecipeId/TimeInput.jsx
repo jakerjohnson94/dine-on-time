@@ -3,12 +3,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import { appBlue, fontGreyPrimary, fontGreySecondary } from '../resources/colors.js';
+import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors.js';
 
 const style = {
   input: {
     textAlign: 'center',
     fontColor: fontGreySecondary,
+
     marginBottom: '.5em',
     alignSelf: 'center',
   },
@@ -20,7 +21,7 @@ const style = {
     fontColor: fontGreyPrimary,
     marginTop: '.5em',
     marginBottom: '.2em',
-    fontSize: '.9em',
+    fontSize: '1.2em',
     fontWeight: 'bold',
   },
   paper: {
@@ -48,7 +49,7 @@ class TimeInput extends Component {
       <React.Fragment>
         <Paper style={style.paper}>
           <Typography style={style.title} variant="display1">
-            What Time Would You Like To Eat?
+            When Would You Like To Eat?
           </Typography>
           <form style={style.form}>
             <TextField
@@ -60,7 +61,7 @@ class TimeInput extends Component {
             />
           </form>
           <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
-            Start Cooking
+            Tell Me What to Do
           </Button>
         </Paper>
       </React.Fragment>
