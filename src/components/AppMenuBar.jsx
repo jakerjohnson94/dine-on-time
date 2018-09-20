@@ -42,7 +42,10 @@ class AppMenuBar extends Component {
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
               >
-                <MenuItem to="/recipe" component={Link} onClick={this.handleClose}>
+                <MenuItem to="/scanner" component={Link} onClick={this.handleClose}>
+                  Scanner
+                </MenuItem>
+                <MenuItem to="/" component={Link} onClick={this.handleClose}>
                   Home
                 </MenuItem>
                 <MenuItem to="/recipe" component={Link} onClick={this.handleClose}>
@@ -50,9 +53,6 @@ class AppMenuBar extends Component {
                 </MenuItem>
                 <MenuItem to="/steps" onClick={this.handleClose} component={Link}>
                   Steps
-                </MenuItem>
-                <MenuItem to="/scanner" component={Link} onClick={this.handleClose}>
-                  Scanner
                 </MenuItem>
               </Menu>
             </div>
