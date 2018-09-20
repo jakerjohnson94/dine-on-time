@@ -8,7 +8,7 @@ import ResponsiveRootSlider from './ResponsiveSlider';
 // icons
 // local images
 import scanButtonIcon from '../../resources/images/qrBtnIcon.svg';
-
+import graphic1 from '../../resources/images/root/infoImg1.svg';
 //local css
 import '../../App.css';
 //color pallette import
@@ -45,12 +45,16 @@ const style = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: '6em',
+    paddingTop: '.5em',
   },
   link: {
     color: appBlue,
   },
+  infoHeadline: {
+    fontSize: '1.2em',
+  },
 };
+
 class RootContent extends Component {
   render() {
     return (
@@ -91,7 +95,7 @@ class RootContent extends Component {
         <Hidden mdDown>
           <Grid item xs={9}>
             <Link to="/recipes/list" style={{ textDecoration: 'none' }}>
-              <Typography style={style.scanTextDesktop} variant="h2">
+              <Typography style={style.scanTextDesktop} component="h2">
                 Lookup A Recipe
               </Typography>
             </Link>
@@ -103,3 +107,12 @@ class RootContent extends Component {
 }
 
 export default RootContent;
+
+// <Grid item xs={12}>
+//   <Typography variant="display1" component="h1" style={style.infoHeadline}>
+//     Dine on Time takes the stress out of cooking
+//   </Typography>
+// </Grid>
+// <Grid item xs={12}>
+//   <img src={graphic1} alt="infoGraphic1" />
+// </Grid>

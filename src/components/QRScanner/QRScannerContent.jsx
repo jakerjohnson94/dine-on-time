@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Typography, Grid, Button } from '@material-ui/core';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fontGreyPrimary } from '../../resources/colors';
 import { connect } from 'react-redux';
 import fetchRecipeById from '../../redux/recipeAction.js';
@@ -52,7 +52,7 @@ class QRScanner extends Component {
   };
 
   handleError = err => {
-    console.error(err);
+    return console.error(err);
   };
 
   render() {
@@ -73,12 +73,20 @@ class QRScanner extends Component {
             />
           </div>
         </Grid>
+
         <Grid item xs={12}>
-          <div style={style.centeredButton}>
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <Button variant="contained">Back</Button>
-            </Link>
-          </div>
+          <Grid container align="center" justify="center">
+            <Grid item xs={12}>
+              <Button component={Link} to="/" variant="contained">
+                Back
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Button component={Link} variant="contained" to="/recipe">
+                Recipe Page{' '}
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     );

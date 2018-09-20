@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import { Link } from 'react-router-dom';
 import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors.js';
 
 const style = {
@@ -60,7 +61,12 @@ class TimeInput extends Component {
               defaultValue="17:30"
             />
           </form>
-          <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
+          <Button
+            component={Link}
+            to="/steps"
+            style={{ color: appBlue }}
+            onClick={this.buttonOnClick}
+          >
             Tell Me What to Do
           </Button>
         </Paper>
