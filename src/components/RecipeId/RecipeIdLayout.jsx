@@ -17,13 +17,16 @@ class RecipeIdLayout extends Component {
     return (
       <React.Fragment>
         {this.props.fetching ? (
-          <ReactLoading
-            type={'spin'}
-            color={appBlue}
-            height={'20%'}
-            width={'20%'}
-            style={{ position: 'absolute', right: '50vw', top: '50vh' }}
-          />
+          <div
+            id='loadingWheel'
+            style={{ position: 'absolute', padding: '37.5vw' }}>
+            <ReactLoading
+              type={'spin'}
+              color={appBlue}
+              height={'25vw'}
+              width={'25vw'}
+            />
+          </div>
         ) : (
           <React.Fragment>
             <AppMenuBar />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
@@ -74,5 +75,8 @@ class TimeInput extends Component {
     );
   }
 }
+
+// Send entered time to redux store
+const mapDispatchToProps = () => {}
 
 export default TimeInput;
