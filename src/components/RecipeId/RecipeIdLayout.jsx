@@ -9,10 +9,6 @@ import fetchRecipeById from '../../redux/recipeAction.js';
 import { Button } from '@material-ui/core';
 
 class RecipeIdLayout extends Component {
-  componentWillMount() {
-    this.props.fetchRecipe('1');
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -40,13 +36,13 @@ class RecipeIdLayout extends Component {
 
 const mapStateToProps = state => {
   return {
-    ...state,
+    ...state
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId)),
+    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId))
   };
 };
 
