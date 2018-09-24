@@ -170,7 +170,7 @@ class recipeIdContent extends Component {
 
                     <Grid item xs={12}>
                       <div style={style.timer}>
-                        <TimeInput hoistTime={time => this.setState({ startTime: time })} />
+                        <TimeInput />
                       </div>
                     </Grid>
                   </Grid>
