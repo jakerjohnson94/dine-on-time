@@ -32,7 +32,6 @@ export default class Timer extends Component {
                         <Typography variant='display4'> { Math.floor( this.state.seconds / 60 ) } : { ( '0' + ( this.state.seconds % 60 ) ).slice( -2 ) } </Typography>
                     </span>
                 </div>
-
                 <Button
                     varient='contained'
                     color={ this.state.isRunning ? 'secondary' : 'primary' }
