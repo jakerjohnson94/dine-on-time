@@ -8,7 +8,6 @@ export default class Timer extends Component {
     state = {
         seconds: Number( this.props.minutes ) * 60,
         isRunning: false,
-        //countDown: this.countDown().bind( this ),
     }
 
     // If it's counting down then count down and run next at 00:00 if provided.
