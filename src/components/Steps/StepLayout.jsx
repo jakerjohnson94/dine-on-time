@@ -5,19 +5,19 @@ import AppMenuBar from '../AppMenuBar';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../../history';
-import { placeActiveStepInStore } from '../../redux/activeStepAction';
+import { setActiveStep } from '../../redux/activeStepAction';
 
 class StepLayout extends Component {
   handleClick = () => {
     if (this.props.steps[this.props.activeStep + 1])
-      this.props.addActiveStep(this.props.activeStep + 1);
+      this.props.setActiveStep(this.props.activeStep + 1);
     else {
       history.push('/completed');
     }
   };
 
   componentDidMount() {
-    this.props.addActiveStep(this.props.activeStep);
+    this.props.setActiveStep(this.props.activeStep);
   }
 
   render() {
@@ -33,7 +33,7 @@ class StepLayout extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    addActiveStep: activeStep => dispatch(placeActiveStepInStore(activeStep)),
+    setActiveStep: activeStep => dispatch(setActiveStep(activeStep)),
   };
 };
 

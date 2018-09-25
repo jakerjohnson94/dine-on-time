@@ -1,14 +1,8 @@
-export const ACTIVE_STEP = 'ACTIVE_STEP';
-export const RESET_ACTIVE_STEP = 'RESET_ACTIVE_STEP';
-export const placeActiveStepInStore = activeStep => {
-  return {
-    type: ACTIVE_STEP,
-    payload: activeStep,
-  };
-};
+export const SET_ACTIVE_STEP = 'ACTIVE_STEP';
 
-export const resetActiveStep = () => {
+export const setActiveStep = activeStep => {
   return {
-    type: RESET_ACTIVE_STEP,
+    type: SET_ACTIVE_STEP,
+    payload: activeStep,
   };
 };
