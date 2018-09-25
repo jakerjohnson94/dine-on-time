@@ -13,7 +13,7 @@ import {
   Icon,
 } from '@material-ui/core';
 import { appGreyCard } from '../../resources/colors';
-import { placeActiveStepInStore } from '../../redux/activeStepAction';
+import { placeActiveStepInStore, resetActiveStep } from '../../redux/activeStepAction';
 const style = {
   instructions: {},
   title: {},
@@ -35,9 +35,12 @@ const style = {
 class StepContent extends Component {
   timerFn = () => {
     console.log(this.props);
-    this.props.steps[this.props.activeStep + 1]
-      ? this.props.addActiveStep(this.props.activeStep + 1)
-      : history.push('/completed');
+    if (this.props.steps[this.props.activeStep + 1])
+      this.props.addActiveStep(this.props.activeStep + 1);
+    else {
+      history.push('/completed');
+      this.props.resetActiveStep();
+    }
   };
   render() {
     const step = this.props.steps[this.props.activeStep];
@@ -95,6 +98,7 @@ class StepContent extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
+    resetActiveStep: () => dispatch(resetActiveStep()),
     addActiveStep: activeStep => dispatch(placeActiveStepInStore(activeStep)),
   };
 };

@@ -9,9 +9,11 @@ import { placeActiveStepInStore } from '../../redux/activeStepAction';
 
 class StepLayout extends Component {
   handleClick = () => {
-    this.props.steps[this.props.activeStep + 1]
-      ? this.props.addActiveStep(this.props.activeStep + 1)
-      : history.push('/completed');
+    if (this.props.steps[this.props.activeStep + 1])
+      this.props.addActiveStep(this.props.activeStep + 1);
+    else {
+      history.push('/completed');
+    }
   };
 
   componentDidMount() {
