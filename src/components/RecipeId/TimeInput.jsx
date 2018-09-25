@@ -48,7 +48,7 @@ class TimeInput extends Component {
   buttonOnClick = e => {
     e.preventDefault();
     this.props.sendInputTimetoStore(this.state.startTime);
-    history.push('/steps/1');
+    history.push('/steps');
   };
 
   render() {
