@@ -20,7 +20,7 @@ class App extends Component {
         <Route exact path="/" component={RootLayout} />
         <Route exact path="/scanner" component={QRScannerLayout} />
         <Route exact path="/recipe" component={RecipeIdLayout} />
-        <Route path="/steps" component={StepLayout} />
+        <Route path="/steps/:id" render={props => <StepLayout router={props} />} />
         <Route component={ErrorPage} />
       </Switch>
     );

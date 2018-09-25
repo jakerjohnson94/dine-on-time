@@ -31,51 +31,51 @@ const style = {
 };
 class StepContent extends Component {
   render() {
+    const step = this.props.step;
+
     return (
       <React.Fragment>
         <Grid container justify="center" alignItems="center">
-          {this.props.steps.map(step => (
-            <Grid item xs={12} key={step.stepId}>
-              <Card>
-                <CardMedia style={style.stepImage} image={step.optionalImage} title={step.title} />
-                <CardContent>
-                  <Grid container justify="center" alignItems="center">
-                    <Grid item xs={12}>
-                      <Typography variant="title" stylpe={style.title}>
-                        <Typography component="span"> Step {step.stepId}:</Typography> {step.title}
-                      </Typography>
-                    </Grid>
-
-                    <Grid item xs={12}>
-                      <Typography component="p" style={style.instructions}>
-                        {step.instructions}
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Typography variant="subheading" style={style.ingredientsTitle}>
-                        Ingredients:
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Card style={style.ingredientListCard}>
-                        <CardContent>
-                          <Grid container spacing={8} alignItems="center" justify="space-around">
-                            {step.ingredientsRequired.map(ing => (
-                              <Grid key={ing.name} item xs>
-                                <Card elevation={0} style={style.singleIngredientCard}>
-                                  <Typography component="p">{ing.name}</Typography>
-                                </Card>
-                              </Grid>
-                            ))}
-                          </Grid>
-                        </CardContent>
-                      </Card>
-                    </Grid>
+          <Grid item xs={12} key={step.stepId}>
+            <Card>
+              <CardMedia style={style.stepImage} image={step.optionalImage} title={step.title} />
+              <CardContent>
+                <Grid container justify="center" alignItems="center">
+                  <Grid item xs={12}>
+                    <Typography variant="title" stylpe={style.title}>
+                      <Typography component="span"> Step {step.stepId}:</Typography> {step.title}
+                    </Typography>
                   </Grid>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+
+                  <Grid item xs={12}>
+                    <Typography component="p" style={style.instructions}>
+                      {step.instructions}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography variant="subheading" style={style.ingredientsTitle}>
+                      Ingredients:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Card style={style.ingredientListCard}>
+                      <CardContent>
+                        <Grid container spacing={8} alignItems="center" justify="space-around">
+                          {step.ingredientsRequired.map(ing => (
+                            <Grid key={ing.name} item xs>
+                              <Card elevation={0} style={style.singleIngredientCard}>
+                                <Typography component="p">{ing.name}</Typography>
+                              </Card>
+                            </Grid>
+                          ))}
+                        </Grid>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
       </React.Fragment>
     );
