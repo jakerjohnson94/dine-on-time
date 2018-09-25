@@ -19,10 +19,10 @@ class StepLayout extends Component {
       this.state.stepIndex = this.props.steps.findIndex(
         step => parseInt(step.stepId) === parseInt(id)
       );
-      this.state.step = this.props.steps[this.state.stepIndex];
+      this.setState({ step: this.props.steps[this.state.stepIndex] });
     };
     handlePath(this.props.router.location.pathname);
-    console.log(this.state.step);
+
     let nextStepParam;
     if (
       this.props.steps[this.state.stepIndex + 1] &&
