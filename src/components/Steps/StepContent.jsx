@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ProgressTimer from './ProgressTimer';
+import StepActiveTimer from './ProgressTimer/ProgressTimer';
 import history from '../../history';
 import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
 import { appGreyCard } from '../../resources/colors';
 import { setActiveStep } from '../../redux/activeStepAction';
+import RecipeTimelineStepper from './RecipeTimelineStepper/RecipeTimelineStepper.jsx';
 const style = {
   instructions: {
-    fontSize: '1em'
+    fontSize: '1em',
   },
   title: {},
   stepImage: {
@@ -30,7 +31,6 @@ const style = {
 };
 class StepContent extends Component {
   timerFn = () => {
-    console.log(this.props);
     if (this.props.steps[this.props.activeStep + 1])
       this.props.setActiveStep(this.props.activeStep + 1);
     else {
@@ -43,18 +43,21 @@ class StepContent extends Component {
 
     return (
       <React.Fragment>
-        <Grid container justify="center" alignItems="center">
+        <Grid key={step.stepId} container justify="center" alignItems="center">
           <Grid item xs={12} key={step.stepId}>
             <Card>
               <CardMedia style={style.stepImage} image={step.optionalImage} title={step.title} />
               <CardContent>
                 <Grid container justify="center" alignItems="center">
                   <Grid item xs={12}>
-                    <Typography variant="title" stylpe={style.title}>
-                      <Typography component="span"> Step {step.stepId}:</Typography> {step.title}
-                    </Typography>
+                    <RecipeTimelineStepper />
                   </Grid>
 
+                  <Grid item xs={12}>
+                    <Typography variant="title" style={style.title}>
+                      {step.title}
+                    </Typography>
+                  </Grid>
                   <Grid item xs={12}>
                     <Typography component="p" style={style.instructions}>
                       {step.instructions}
@@ -80,7 +83,7 @@ class StepContent extends Component {
                       </CardContent>
                     </Card>
                     <Grid item xs={12} style={style.progressTimer}>
-                      <ProgressTimer next={this.timerFn} max={step.activeTime / 60} />
+                      <StepActiveTimer next={this.timerFn} max={step.activeTime} />
                     </Grid>
                   </Grid>
                 </Grid>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Grid, Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import StepContent from './StepContent';
 import AppMenuBar from '../AppMenuBar';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 import history from '../../history';
 import { setActiveStep } from '../../redux/activeStepAction';
 
@@ -24,7 +24,12 @@ class StepLayout extends Component {
     return (
       <Grid>
         <AppMenuBar />
-        <StepContent step={this.props.steps[this.props.activeStep]} />
+        <Grid container style={{ height: '100%', width: '100%' }}>
+          <Grid item xs={12}>
+            <StepContent step={this.props.steps[this.props.activeStep]} />
+          </Grid>
+          <Grid item xs={12} />
+        </Grid>
       </Grid>
     );
   }

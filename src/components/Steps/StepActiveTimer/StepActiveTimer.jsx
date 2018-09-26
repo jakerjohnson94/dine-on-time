@@ -1,7 +1,7 @@
 import ProgressBar from 'react-bootstrap/lib/ProgressBar';
 import React, { Component } from 'react';
-import './ProgressTimer.css';
-export default class Timer extends Component {
+import './StepActiveTimer.css';
+export default class StepActiveTimer extends Component {
   state = {
     seconds: 0,
     isRunning: true,
