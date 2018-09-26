@@ -5,28 +5,37 @@ import AppMenuBar from '../AppMenuBar';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../../history';
+import { setActiveStep } from '../../redux/activeStepAction';
 
 class StepLayout extends Component {
-  state = {
-    activeStep: 0,
+  handleClick = () => {
+    if (this.props.steps[this.props.activeStep + 1])
+      this.props.setActiveStep(this.props.activeStep + 1);
+    else {
+      history.push('/completed');
+    }
   };
 
-  handleClick = () => {
-    this.props.steps[this.state.activeStep + 1]
-      ? this.setState({ activeStep: this.state.activeStep + 1 })
-      : history.push('/completed');
-  };
+  componentDidMount() {
+    this.props.setActiveStep(this.props.activeStep);
+  }
+
   render() {
     return (
       <Grid>
         <AppMenuBar />
+        <StepContent step={this.props.steps[this.props.activeStep]} />
 
-        <StepContent step={this.props.steps[this.state.activeStep]} />
         <Button onClick={this.handleClick}>Next</Button>
       </Grid>
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    setActiveStep: activeStep => dispatch(setActiveStep(activeStep)),
+  };
+};
 
 const mapStateToProps = state => {
   return {
@@ -35,13 +44,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(StepLayout);
-
-// ingredientsRequired={step.ingredients}
-// stepId={step.Id}
-// title={step.title}
-// alertTime={step.alertTime}
-// activeTime={step.activeTime}
-// instructions={step.instructions}
-// optionalImage={step.optionalImage}
-// isPrepStep={step.isPrepStep}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StepLayout);

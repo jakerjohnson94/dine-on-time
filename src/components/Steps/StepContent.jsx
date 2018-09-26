@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Timer from './Timer';
+import history from '../../history';
 import {
   Typography,
   Grid,
@@ -11,6 +13,7 @@ import {
   Icon,
 } from '@material-ui/core';
 import { appGreyCard } from '../../resources/colors';
+import { setActiveStep } from '../../redux/activeStepAction';
 const style = {
   instructions: {},
   title: {},
@@ -30,8 +33,17 @@ const style = {
   },
 };
 class StepContent extends Component {
+  timerFn = () => {
+    console.log(this.props);
+    if (this.props.steps[this.props.activeStep + 1])
+      this.props.setActiveStep(this.props.activeStep + 1);
+    else {
+      history.push('/completed');
+      this.props.setActiveStep(0);
+    }
+  };
   render() {
-    const step = this.props.step;
+    const step = this.props.steps[this.props.activeStep];
 
     return (
       <React.Fragment>
@@ -71,6 +83,9 @@ class StepContent extends Component {
                         </Grid>
                       </CardContent>
                     </Card>
+                    <Grid item xs={12}>
+                      <Timer next={this.timerFn} minutes={step.activeTime / 60} />
+                    </Grid>
                   </Grid>
                 </Grid>
               </CardContent>
@@ -81,6 +96,11 @@ class StepContent extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    setActiveStep: activeStep => dispatch(setActiveStep(activeStep)),
+  };
+};
 
 const mapStateToProps = state => {
   return {
@@ -88,4 +108,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(StepContent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StepContent);
