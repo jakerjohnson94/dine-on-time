@@ -25,8 +25,6 @@ class StepLayout extends Component {
       <Grid>
         <AppMenuBar />
         <StepContent step={this.props.steps[this.props.activeStep]} />
-
-        <Button onClick={this.handleClick}>Next</Button>
       </Grid>
     );
   }

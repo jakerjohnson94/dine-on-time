@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-export default class Timer extends Component {
+export default class AlertTimer extends Component {
   // Component should recieve a time in minutes
   state = {
     seconds: Number(this.props.minutes) * 60,

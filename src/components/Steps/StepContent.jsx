@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Timer from './Timer';
+import ProgressTimer from './ProgressTimer';
 import history from '../../history';
-import {
-  Typography,
-  Grid,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Paper,
-  Icon,
-} from '@material-ui/core';
+import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
 import { appGreyCard } from '../../resources/colors';
 import { setActiveStep } from '../../redux/activeStepAction';
 const style = {
-  instructions: {},
+  instructions: {
+    fontSize: '1em'
+  },
   title: {},
   stepImage: {
     height: '30vh',
@@ -30,6 +23,9 @@ const style = {
   ingredientsTitle: {
     textAlign: 'center',
     marginTop: '.5em',
+  },
+  progressTimer: {
+    marginTop: '1em',
   },
 };
 class StepContent extends Component {
@@ -83,8 +79,8 @@ class StepContent extends Component {
                         </Grid>
                       </CardContent>
                     </Card>
-                    <Grid item xs={12}>
-                      <Timer next={this.timerFn} minutes={step.activeTime / 60} />
+                    <Grid item xs={12} style={style.progressTimer}>
+                      <ProgressTimer next={this.timerFn} max={step.activeTime / 60} />
                     </Grid>
                   </Grid>
                 </Grid>
