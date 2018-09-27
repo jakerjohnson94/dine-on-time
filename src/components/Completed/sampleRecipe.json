@@ -1,0 +1,280 @@
+{
+  "_id": 1,
+  "blueApronId": 2077,
+  "title": "Pibil-Style Pork",
+  "subtitle": "with Spinach & Citrus Rice",
+  "img": "https://media.blueapron.com/recipes/2077/square_newsletter_images/1483985395-4-6838/116-2PM-pibil-pork-11303_regional_spinach-square_hi_res.jpg",
+  "winePairings": [
+    {
+      "name": "Bodegas VQ",
+      "style": "Grenache",
+      "year": "2015",
+      "img": "https://media.blueapron.com/wine/147/bottle_images/1480951776-5335-4110/Bodegas-VQ-Grenache-btl_Shadow.png"
+    },
+    {
+      "name": "Las Canovas",
+      "style": "Tempranillo",
+      "year": "2014",
+      "img": "https://media.blueapron.com/wine/48/bottle_images/1480971759-26-7758/las-canovas-bottle.png"
+    }
+  ],
+  "qrCode": "",
+  "description": "To achieve this dish's particular depth, we are briefly marinating pork chops with fresh lime juice and traditional spices. Cara cara orange forms the base of a sweet and spicy salsa, while some of its zest brightens up our simple side of rice",
+  "totalPrepTime": 20,
+  "totalCookTime": 25,
+  "servings": 2,
+  "calories": 700,
+  "ingredients": [
+    {
+      "name": "Boneless, Center-Cut Pork Chops",
+      "quantity": "2",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/pork.png"
+    },
+    {
+      "name": "Long Grain White Rice",
+      "quantity": "3/4 Cup",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/rice.png"
+    },
+    {
+      "name": "Garlic",
+      "quantity": "3 cloves",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/garlic.png"
+    },
+    {
+      "name": "Cilantro",
+      "quantity": "1 bunch",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/cilantro.png"
+    },
+    {
+      "name": "Spinach",
+      "quantity": "1/2 lb",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/spinach.png"
+    },
+    {
+      "name": "Cara Cara Orange",
+      "quantity": "1",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/caracaraorange.png"
+    },
+    {
+      "name": "Lime",
+      "quantity": "1",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/lime.png"
+    },
+    {
+      "name": "Scallions",
+      "quantity": "2",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/scallions.png"
+    },
+    {
+      "name": "Pork Spice Blend",
+      "quantity": "2 tbsp",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/porkspiceblend.png"
+    },
+    {
+      "name": "Sliced Pickled Jalapeno Pepper",
+      "quantity": "1 oz",
+      "img": "https://s3.us-east-2.amazonaws.com/dine-on-time/recipes/2077/jal.png"
+    },
+    {
+      "name": "Olive Oil",
+      "quantity": "a few drizzles",
+      "img": "http://purepng.com/public/uploads/large/purepng.com-olive-oilolive-oiloliveoilcrop-1411527968038vqoyg.png"
+    }
+  ],
+  "steps": [
+    {
+      "ingredientsRequired": [
+        {
+          "name": "Garlic",
+          "img": ""
+        },
+        {
+          "name": "Scallions",
+          "img": ""
+        },
+        {
+          "name": "Spinnach",
+          "img": ""
+        },
+        {
+          "name": "Cilantro",
+          "img": ""
+        },
+        {
+          "name": "Lime",
+          "img": ""
+        },
+        {
+          "name": "Cara-Cara Orange",
+          "img": ""
+        },
+        {
+          "name": "Sliced Pickled Jalapeño Pepper",
+          "img": ""
+        }
+      ],
+      "stepId": 1,
+      "title": "Prepare the Ingredients",
+      "alertTime": null,
+      "alertMessage": null,
+      "activeTime": 10,
+      "instructions": "Wash and Dry Fresh produce. Quarter the lime. Peel orange and mince rind to get 2 teaspoons of zest. Medium dice the remaining orange. Finely chop cilantro leaves and stems. Cut scallions and thinly slice. Peel and mince garlic. Finely chop pepper and wash hands.",
+      "optionalImage": "https://media.blueapron.com/recipes/2077/recipe_steps/9847/1484077951-4-0574/116-2PM-pibil-pork-11105_SITE_VAR_high_feature.jpg"
+    },
+    {
+      "ingredientsRequired": [
+        {
+          "name": "Pork Spice Blend",
+          "img": ""
+        },
+        {
+          "name": "Lime",
+          "img": ""
+        },
+        {
+          "name": "Pork Chops",
+          "img": ""
+        },
+        {
+          "name": "Salt & Pepper",
+          "img": ""
+        }
+      ],
+      "stepId": 2,
+      "title": "Make the Marinade and Marinate the Pork Chops",
+      "alertTime": 10,
+      "alertMessage": "",
+      "activeTime": 5,
+      "instructions": "In a medium bowl, combine the spice blend, the juice of 2 lime wedges and 2 tablespoons of water. Pat the porkchops dry with paper towels; season with salt and pepper on both sides. Add the seasoned pork chops to the bowl of marinade; turn to evenly coat. Transfer to a plate. Set aside to marinate for at least 10 minutes.",
+      "optionalImage": "https://media.blueapron.com/recipes/2833/recipe_steps/14298/1518536688-1-0019-0807/0319_2PRE08_Soy-Glazed-Meatloaf_0148_WEB_high_feature.jpg"
+    },
+    {
+      "ingredientsRequired": [
+        {
+          "name": "Long Grain Rice",
+          "img": ""
+        },
+        {
+          "name": "Orange Zest",
+          "img": ""
+        },
+        {
+          "name": "Salt & Pepper",
+          "img": ""
+        }
+      ],
+      "stepId": 3,
+      "title": "Cook The Rice",
+      "alertTime": 14,
+      "alertMessage": "",
+      "activeTime": 5,
+      "instructions": "While Pork marinates in a small pot, combine the rice, a big pimch of salt and 1 1/4 cups water. Bring to a boil and reduce heat to low. Cook for 12 to 14 minutes. Once finished, turn off the heat and fluff the rice with a fork; stir in orange zest. Season with salt and pepper to taste.",
+      "optionalImage": "https://media.blueapron.com/recipes/2077/recipe_steps/9852/1484347642-4-4711/116-2PM-pibil-pork-11186_SITE_high_feature_high_feature.jpg"
+    },
+    {
+      "ingredientsRequired": [
+        {
+          "name": "Cara Cara Orange",
+          "img": ""
+        },
+        {
+          "name": "Cilantro",
+          "img": ""
+        },
+        {
+          "name": "Scallions",
+          "img": ""
+        },
+        {
+          "name": "pepper",
+          "img": ""
+        },
+        {
+          "name": "Pickled Jalapeño Peppers (finely chopped)",
+          "img": ""
+        },
+        {
+          "name": "Salt & Pepper",
+          "img": ""
+        }
+      ],
+      "stepId": 4,
+      "title": "Make The Salsa",
+      "alertTime": null,
+      "alertMessage": "",
+      "activeTime": 5,
+      "instructions": "while the rice cooks, in a bowl, combine the orange, cilantro, white bottoms of scallions, a drizzle of olive oil, and as much of the pepper as you'd like, depending on how spice you'd like the dish to be. Season with salt and pepper for taste.",
+      "optionalImage": "https://media.blueapron.com/recipes/2077/recipe_steps/9852/1484347642-4-4711/116-2PM-pibil-pork-11186_SITE_high_feature_high_feature.jpg"
+    },
+    {
+      "ingredientsRequired": [
+        {
+          "name": "Olive Oil",
+          "img": ""
+        },
+        {
+          "name": "Pork Chops (Marinated)",
+          "img": ""
+        }
+      ],
+      "stepId": 5,
+      "title": "Cook the Pork Chops",
+      "alertTime": 8,
+      "alertMessage": "",
+      "activeTime": 5,
+      "instructions": "While rice cooks, heat 2 tbsp of olive oil on medium until hot. add the marinated pork chops and cook, loosely covering the pan with foil. 3 to 4 minutes per side or until browned. Leave any brown bits in the pan and transfer to plate. Set aside in a warm place.",
+      "optionalImage": "https://media.blueapron.com/recipes/2833/recipe_steps/14299/1518536702-1-0021-2420/0319_2PRE08_Soy-Glazed-Meatloaf_0179_WEB_high_feature.jpg"
+    },
+    {
+      "ingredientsRequired": [
+        {
+          "name": "Garlic (Minced)",
+          "img": ""
+        },
+        {
+          "name": "Reserved Pork Fond",
+          "img": ""
+        },
+        {
+          "name": "Olive Oil",
+          "img": ""
+        },
+        {
+          "name": "Spinach",
+          "img": ""
+        },
+        {
+          "name": "Salt & Pepper",
+          "img": ""
+        },
+        {
+          "name": "Cooked Rice",
+          "img": ""
+        },
+        {
+          "name": "Cooked Pork Chops",
+          "img": ""
+        },
+        {
+          "name": "Salsa",
+          "img": ""
+        },
+        {
+          "name": "Scallion (Green Tops)",
+          "img": ""
+        },
+        {
+          "name": "Lime Wedges",
+          "img": ""
+        }
+      ],
+      "stepId": 6,
+      "title": "Cook The Spinach and Plate Your Dish",
+      "alertTime": null,
+      "alertMessage": null,
+      "activeTime": 10,
+      "instructions": "Add the garlic to the pan of reserved fond. Cook on medium-high, stirring constantly, 30 seconds to 1 minutes or until fragrans. Add the spinach and season with salt and pepper. Cook, stirring occassionally, 1-2 minutes or until wilted. Season with salt and pepper to taste. Divide the cooked rice, cooked spinach, and cooked pork chops between 2 dishes. Top with the salse. garnish with the green tops of the scallions and remaining lime wedges. Enjoy!",
+      "optionalImage": "https://media.blueapron.com/recipes/2077/recipe_steps/9850/1483641615-4-2844/116-2PM-pibil-pork-11285_regional_spinach_SITE_high_feature.jpg"
+    }
+  ]
+}
