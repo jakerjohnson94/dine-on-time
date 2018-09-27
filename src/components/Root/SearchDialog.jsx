@@ -8,7 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import {appBlue} from '../../resources/colors'
 import fetchRecipeById from '../../redux/recipeAction';
 
 class SearchDialog extends Component {
@@ -35,7 +35,7 @@ class SearchDialog extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>No QR Reader ? Click Here</Button>
+        <Button style={{color: appBlue ,marginTop: '1rem'}}variant={'contained'} onClick={this.handleClickOpen}>No QR Reader ? Click Here</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
