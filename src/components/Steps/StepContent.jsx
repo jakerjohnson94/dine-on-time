@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import StepActiveTimer from './ProgressTimer/ProgressTimer';
+import StepActiveTimer from './StepActiveTimer/StepActiveTimer';
 import history from '../../history';
 import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
 import { appGreyCard } from '../../resources/colors';
