@@ -46,7 +46,12 @@ class StepContent extends Component {
         <Grid key={step.stepId} container justify="center" alignItems="center">
           <Grid item xs={12} key={step.stepId}>
             <Card>
-              <CardMedia style={style.stepImage} image={step.optionalImage} title={step.title} />
+              <CardMedia
+                style={style.stepImage}
+                image={step.optionalImage}
+                src={step.optionalImage}
+                title={step.title}
+              />
               <CardContent>
                 <Grid container justify="center" alignItems="center">
                   <Grid item xs={12}>
@@ -83,7 +88,7 @@ class StepContent extends Component {
                       </CardContent>
                     </Card>
                     <Grid item xs={12} style={style.progressTimer}>
-                      <StepActiveTimer next={this.timerFn} max={step.activeTime / 60} />
+                      <StepActiveTimer next={this.timerFn} max={step.activeTime} />
                     </Grid>
                   </Grid>
                 </Grid>

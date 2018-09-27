@@ -12,13 +12,13 @@ const style = {
     marginTop: '.75em',
     marginBottom: '.75em',
     color: fontGreyPrimary,
-    fontSize: '2em'
+    fontSize: '2em',
   },
   centeredDiv: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
   },
   centeredButton: {
     textDecoration: 'none',
@@ -26,21 +26,21 @@ const style = {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginTop: '.5em'
-  }
+    marginTop: '.5em',
+  },
 };
 
 class QRScanner extends Component {
   state = {
     delay: 750,
     result: null,
-    startTime: null
+    startTime: null,
   };
 
   handleScan = data => {
     if (data) {
       this.setState({
-        result: data
+        result: data,
       });
       const [id] = data.match(/(\d+)$/g);
       this.props.fetchRecipe(id);
@@ -53,19 +53,9 @@ class QRScanner extends Component {
 
   render() {
     return (
-      <Grid
-        alignContent="center"
-        alignItems="center"
-        justify="center"
-        container
-      >
+      <Grid alignContent="center" alignItems="center" justify="center" container>
         <Grid item xs={12}>
-          <Typography
-            style={style.titleHeader}
-            variant="display3"
-            gutterBottom
-            align="center"
-          >
+          <Typography style={style.titleHeader} variant="display3" gutterBottom align="center">
             Scan your QR Code
           </Typography>
         </Grid>
@@ -87,11 +77,6 @@ class QRScanner extends Component {
                 Back
               </Button>
             </Grid>
-            <Grid item xs={12}>
-              <Button component={Link} variant="contained" to="/recipe">
-                Recipe Page{' '}
-              </Button>
-            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -101,13 +86,13 @@ class QRScanner extends Component {
 
 const mapStateToProps = state => {
   return {
-    ...state
+    ...state,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId))
+    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId)),
   };
 };
 

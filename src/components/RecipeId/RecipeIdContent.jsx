@@ -8,12 +8,12 @@ import {
   CardMedia,
   CardContent,
   Icon,
-  Divider,
 } from '@material-ui/core';
-import ReactLoading from 'react-loading';
+// import ReactLoading from 'react-loading';
 import TimeInput from './TimeInput';
 
 import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
+import { getTotalTimeFromSteps } from '../../resources/helperFunctions';
 
 const style = {
   header: {
@@ -157,7 +157,7 @@ class recipeIdContent extends Component {
 
                       <Grid item xs={4}>
                         <p style={style.infoListInfo}>
-                          {this.props.recipe.totalPrepTime + this.props.recipe.totalCookTime} mins
+                          {getTotalTimeFromSteps(this.props.steps)} mins
                         </p>
                       </Grid>
                       <Grid item xs={4}>
@@ -188,11 +188,17 @@ class recipeIdContent extends Component {
                             item
                             xs={ing[1] !== undefined ? 6 : 12}
                           >
-                            <img style={style.ingredientImg} key={ing[0].name} src={ing[0].img} />
+                            <img
+                              style={style.ingredientImg}
+                              alt={ing[0].name}
+                              key={ing[0].name}
+                              src={ing[0].img}
+                            />
                           </Grid>
                           {ing[1] !== undefined ? (
                             <Grid style={style.centeredIngredient} item xs={6}>
                               <img
+                                alt={ing[1].name}
                                 style={style.ingredientImg}
                                 key={ing[1].img}
                                 src={ing[1].img || null}
@@ -233,7 +239,6 @@ class recipeIdContent extends Component {
           </Card>
         </Grid>
       </Grid>
-      
     );
   }
 }
