@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Timer from './Timer';
+import StepActiveTimer from './StepActiveTimer/StepActiveTimer';
 import history from '../../history';
-import {
-  Typography,
-  Grid,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Paper,
-  Icon,
-} from '@material-ui/core';
+import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
 import { appGreyCard } from '../../resources/colors';
 import { setActiveStep } from '../../redux/activeStepAction';
+import RecipeTimelineStepper from './RecipeTimelineStepper/RecipeTimelineStepper.jsx';
 const style = {
-  instructions: {},
+  instructions: {
+    fontSize: '1em',
+  },
   title: {},
   stepImage: {
     height: '30vh',
@@ -31,10 +25,12 @@ const style = {
     textAlign: 'center',
     marginTop: '.5em',
   },
+  progressTimer: {
+    marginTop: '1em',
+  },
 };
 class StepContent extends Component {
   timerFn = () => {
-    console.log(this.props);
     if (this.props.steps[this.props.activeStep + 1])
       this.props.setActiveStep(this.props.activeStep + 1);
     else {
@@ -47,18 +43,21 @@ class StepContent extends Component {
 
     return (
       <React.Fragment>
-        <Grid container justify="center" alignItems="center">
+        <Grid key={step.stepId} container justify="center" alignItems="center">
           <Grid item xs={12} key={step.stepId}>
             <Card>
               <CardMedia style={style.stepImage} image={step.optionalImage} title={step.title} />
               <CardContent>
                 <Grid container justify="center" alignItems="center">
                   <Grid item xs={12}>
-                    <Typography variant="title" stylpe={style.title}>
-                      <Typography component="span"> Step {step.stepId}:</Typography> {step.title}
-                    </Typography>
+                    <RecipeTimelineStepper />
                   </Grid>
 
+                  <Grid item xs={12}>
+                    <Typography variant="title" style={style.title}>
+                      {step.title}
+                    </Typography>
+                  </Grid>
                   <Grid item xs={12}>
                     <Typography component="p" style={style.instructions}>
                       {step.instructions}
@@ -83,8 +82,8 @@ class StepContent extends Component {
                         </Grid>
                       </CardContent>
                     </Card>
-                    <Grid item xs={12}>
-                      <Timer next={this.timerFn} minutes={step.activeTime / 60} />
+                    <Grid item xs={12} style={style.progressTimer}>
+                      <StepActiveTimer next={this.timerFn} max={step.activeTime} />
                     </Grid>
                   </Grid>
                 </Grid>
