@@ -9,7 +9,7 @@ import SearchDialog from './SearchDialog';
 // icons
 // local images
 import scanButtonIcon from '../../resources/images/qrBtnIcon.svg';
-import graphic1 from '../../resources/images/root/infoImg1.svg';
+
 //local css
 import '../../App.css';
 //color pallette import
@@ -94,13 +94,11 @@ class RootContent extends Component {
         </Hidden>
 
         <Hidden mdDown>
-        <Grid container justify='center' alignItems='center'>
-          <Grid item xs={1}>
-  
-              <SearchDialog style={style.centerText}text='Search Recipe' />
-  
+          <Grid container justify="center" alignItems="center">
+            <Grid item xs={1}>
+              <SearchDialog style={style.centerText} text="Search Recipe" />
+            </Grid>
           </Grid>
-        </Grid>
         </Hidden>
       </Grid>
     );
