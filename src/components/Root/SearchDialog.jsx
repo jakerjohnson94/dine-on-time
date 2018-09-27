@@ -24,7 +24,8 @@ class SearchDialog extends Component {
   handleClose = () => {
     if ( this.state.recipeId > 0 )
       this.props.fetchRecipe( this.state.recipeId );
-    this.setState({ open: false });
+    else
+      this.setState({open: false});
   };
 
   handleChange = e => {
