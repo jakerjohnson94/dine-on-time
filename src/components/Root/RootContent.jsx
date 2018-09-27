@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Typography, Grid, Hidden } from '@material-ui/core';
 import ResponsiveRootSlider from './ResponsiveSlider';
 //local components
+import SearchDialog from './SearchDialog';
 
 // icons
 // local images
@@ -94,11 +95,10 @@ class RootContent extends Component {
 
         <Hidden mdDown>
           <Grid item xs={9}>
-            <Link to="/recipes/list" style={{ textDecoration: 'none' }}>
-              <Typography style={style.scanTextDesktop} component="h2">
-                Lookup A Recipe
-              </Typography>
-            </Link>
+            <Typography style={style.centerText} variant="subheading">
+              <SearchDialog text='Search Recipe' />
+              No QR code reader? Lookup A Recipe.
+            </Typography>
           </Grid>
         </Hidden>
       </Grid>
