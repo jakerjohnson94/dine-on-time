@@ -14,7 +14,7 @@ import fetchRecipeById from '../../redux/recipeAction';
 class SearchDialog extends Component {
   state = {
     open: false,
-    recipeId: 0
+    recipeId: ''
   };
 
   handleClickOpen = () => {
@@ -23,7 +23,7 @@ class SearchDialog extends Component {
 
   handleClose = () => {
     if ( this.state.recipeId > 0 )
-      this.props.fetchRecipe( this.state.recipeId );
+      this.props.fetchRecipe( Number(this.state.recipeId) );
     else
       this.setState({open: false});
   };
@@ -35,13 +35,13 @@ class SearchDialog extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Search</Button>
+        <Button onClick={this.handleClickOpen}>No QR Reader ? Click Here</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="search-recipe"
         >
-          <DialogTitle id="search-recipe">Search</DialogTitle>
+          <DialogTitle id="search-recipe">No QR Code? Search Recipe By ID</DialogTitle>
           <DialogContent>
             <DialogContentText>
               { this.props.text }
@@ -52,8 +52,8 @@ class SearchDialog extends Component {
               autoFocus
               margin="dense"
               id="recipeId"
-              label="Recipe Number"
-              type="number"
+              type="text"
+              placeholder="Recipe ID"
               fullWidth
             />
           </DialogContent>

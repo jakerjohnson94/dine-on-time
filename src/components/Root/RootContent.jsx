@@ -85,7 +85,7 @@ class RootContent extends Component {
 
           <Grid item xs={9}>
             <Typography style={style.centerText} variant="subheading">
-              No QR code reader?
+              No QR code reader ?
               <Link to="/recipes/list" style={{ textDecoration: 'none' }}>
                 <span style={style.link}> Search the recipe by name</span>
               </Link>
@@ -94,12 +94,13 @@ class RootContent extends Component {
         </Hidden>
 
         <Hidden mdDown>
-          <Grid item xs={9}>
-            <Typography style={style.centerText} variant="subheading">
-              <SearchDialog text='Search Recipe' />
-              No QR code reader? Lookup A Recipe.
-            </Typography>
+        <Grid container justify='center' alignItems='center'>
+          <Grid item xs={1}>
+  
+              <SearchDialog style={style.centerText}text='Search Recipe' />
+  
           </Grid>
+        </Grid>
         </Hidden>
       </Grid>
     );
