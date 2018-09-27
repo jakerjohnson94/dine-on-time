@@ -233,6 +233,7 @@ class recipeIdContent extends Component {
           </Card>
         </Grid>
       </Grid>
+      
     );
   }
 }
