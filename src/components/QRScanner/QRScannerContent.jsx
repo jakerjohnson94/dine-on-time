@@ -38,7 +38,9 @@ class QRScanner extends Component {
   };
 
   handleScan = data => {
-    if (data) {
+    // This is hacky and only for localhost or github pages sites. 
+    // THIS WILL NOT WORK OUTSIDE OF THOSE ENVIRONMENTS
+    if ( data && data.match(/((http|https):\/\/\w+(:3000|github\.io)\/recipe\/\d+)/ig) ) {
       this.setState({
         result: data
       });
@@ -57,8 +59,7 @@ class QRScanner extends Component {
         alignContent="center"
         alignItems="center"
         justify="center"
-        container
-      >
+        container>
         <Grid item xs={12}>
           <Typography
             style={style.titleHeader}

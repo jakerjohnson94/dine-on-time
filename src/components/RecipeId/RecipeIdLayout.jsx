@@ -3,13 +3,18 @@ import RecipeIdContent from './RecipeIdContent';
 import { connect } from 'react-redux';
 import ReactLoading from 'react-loading';
 import { appBlue } from '../../resources/colors';
-import { Link } from 'react-router-dom';
 import AppMenuBar from '../AppMenuBar';
-import fetchRecipeById from '../../redux/recipeAction.js';
-import { Button, Modal, Typography } from '@material-ui/core';
+import fetchRecipeById, { fetchRecipeByURLParam } from '../../redux/recipeAction.js';
 
 class RecipeIdLayout extends Component {
+  componentDidMount = () => {
+    if( this.props.match.params.id && !this.props.recipe ) {
+      this.props.fetchRecipeByParam( this.props.match.params.id )
+    }
+  }
+
   render() {
+
     return (
       <React.Fragment>
         {this.props.fetching ? (
@@ -43,7 +48,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId))
+    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId)),
+    fetchRecipeByParam: recipeId => dispatch(fetchRecipeByURLParam(recipeId)),
   };
 };
 
