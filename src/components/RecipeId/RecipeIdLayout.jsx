@@ -6,7 +6,7 @@ import { appBlue } from '../../resources/colors';
 import { Link } from 'react-router-dom';
 import AppMenuBar from '../AppMenuBar';
 import fetchRecipeById from '../../redux/recipeAction.js';
-import { Button } from '@material-ui/core';
+import { Button, Modal, Typography } from '@material-ui/core';
 
 class RecipeIdLayout extends Component {
   render() {
@@ -14,8 +14,9 @@ class RecipeIdLayout extends Component {
       <React.Fragment>
         {this.props.fetching ? (
           <div
-            id='loadingWheel'
-            style={{ position: 'absolute', padding: '37.5vw' }}>
+            id="loadingWheel"
+            style={{ position: 'absolute', padding: '37.5vw' }}
+          >
             <ReactLoading
               type={'spin'}
               color={appBlue}
