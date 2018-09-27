@@ -1,4 +1,4 @@
-import { GET_RECIPE_BY_ID_REQUEST, GET_RECIPE_BY_ID_RESPONSE } from './recipeAction';
+import { GET_RECIPE_BY_ID_REQUEST, GET_RECIPE_BY_ID_RESPONSE, GET_RECIPE_BY_ID_RESPONSE_ERROR } from './recipeAction';
 import { EATING_INPUT_TIME } from './eatingInputTimeAction';
 import { SET_ACTIVE_STEP } from './activeStepAction';
 const initialRecipeState = {
@@ -24,6 +24,11 @@ export function recipeReducer(state = initialRecipeState, action) {
         recipe: action.payload,
         ingredients: action.payload.ingredients,
         steps: action.payload.steps,
+      };
+    case GET_RECIPE_BY_ID_RESPONSE_ERROR:
+      return {
+        ...state,
+        fetching: false,
       };
     case EATING_INPUT_TIME:
       return {

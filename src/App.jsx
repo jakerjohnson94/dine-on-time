@@ -21,6 +21,7 @@ class App extends Component {
         <Route exact path="/" component={RootLayout} />
         <Route exact path="/scanner" component={QRScannerLayout} />
         <Route exact path="/recipe" component={RecipeIdLayout} />
+        <Route path="/recipe/:id"  component={RecipeIdLayout} />
         <Route path="/steps" component={StepLayout} />
         <Route path="/completed" component={CompletedLayout} />
         <Route component={ErrorPage} />
