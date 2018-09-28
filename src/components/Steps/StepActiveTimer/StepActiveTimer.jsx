@@ -1,8 +1,11 @@
 import ProgressBar from 'react-bootstrap/lib/ProgressBar';
 import React, { Component } from 'react';
 import './StepActiveTimer.css';
+import audio from '../../../resources/audio/nextStepDing.ogg';
+
 export default class StepActiveTimer extends Component {
   state = {
+    nextStepDing: new Audio(audio),
     seconds: 0,
     isRunning: true,
     max: this.props.max * 60,
@@ -31,6 +34,7 @@ export default class StepActiveTimer extends Component {
   };
 
   componentWillUnmount = () => {
+    this.state.nextStepDing.play();
     this.isCancelled = true;
   };
 
@@ -38,3 +42,9 @@ export default class StepActiveTimer extends Component {
     return <ProgressBar max={this.state.max} now={this.state.seconds} />;
   }
 }
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     ...state,
+//     steps: state.steps,
+//   }
+// }

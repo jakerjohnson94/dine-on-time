@@ -70,7 +70,7 @@ class TimeInput extends Component {
             />
           </form>
           <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
-            Tell Me What to Do
+            GO
           </Button>
         </Paper>
         {this.state.isDisplayingDialog ? (

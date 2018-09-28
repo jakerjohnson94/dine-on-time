@@ -41,7 +41,7 @@ const style = {
 
     color: fontGreyPrimary,
   },
-  centerImage: {
+  centerContent: {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -59,7 +59,7 @@ const style = {
 class RootContent extends Component {
   render() {
     return (
-      <Grid alignContent="center" alignItems="center" justify="center" container>
+      <Grid alignItems="center" justify="center" container>
         <Grid item xs={12}>
           <Typography style={style.titleHeader} variant="display2" gutterBottom align="center">
             Dine on Time
@@ -71,7 +71,7 @@ class RootContent extends Component {
 
         <Hidden lgUp>
           <Grid item xs={12}>
-            <div style={style.centerImage}>
+            <div style={style.centerContent}>
               <Link to="/scanner">
                 <img alt="camera icon" src={scanButtonIcon} />
               </Link>
@@ -83,15 +83,15 @@ class RootContent extends Component {
             </Link>
           </Grid>
 
-          <Grid item xs={12}>
-           <SearchDialog style={style.centerText} text='Search Recipe'/>
+          <Grid style={style.centerContent} item xs={12}>
+            <SearchDialog text="Search Recipe" />
           </Grid>
         </Hidden>
 
         <Hidden mdDown>
           <Grid container justify="center" alignItems="center">
-            <Grid item xs={1}>
-              <SearchDialog style={style.centerText} text="Search Recipe" />
+            <Grid style={style.centerContent} item xs={12}>
+              <SearchDialog text="Search Recipe" />
             </Grid>
           </Grid>
         </Hidden>
