@@ -4,8 +4,9 @@ import StepActiveTimer from './StepActiveTimer/StepActiveTimer';
 import history from '../../history';
 import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
 import { appGreyCard } from '../../resources/colors';
-import { setActiveStep } from '../../redux/activeStepAction';
+import { setActiveStepIndex, setPreviousStepIndex } from '../../redux/activeStepAction';
 import RecipeTimelineStepper from './RecipeTimelineStepper/RecipeTimelineStepper.jsx';
+import { addAlertTimer } from '../../redux/alertTimersAction';
 const style = {
   instructions: {
     fontSize: '1em',
@@ -17,7 +18,7 @@ const style = {
   ingredientListCard: {},
   singleIngredientCard: {
     border: '3px solid grey',
-    borderRadius: '10%',
+    borderRadius: '6px',
     textAlign: 'center',
     padding: '.3em',
   },
@@ -31,13 +32,22 @@ const style = {
 };
 class StepContent extends Component {
   timerFn = () => {
-    if (this.props.steps[this.props.activeStep + 1])
-      this.props.setActiveStep(this.props.activeStep + 1);
-    else {
+    this.props.previousStep && this.props.steps[this.props.previousStep].alertTime
+      ? this.props.addAlertTimer(
+          this.props.steps[this.props.previousStep].alertTime,
+          this.props.steps[this.props.previousStep].title
+        )
+      : null;
+    if (this.props.steps[this.props.activeStep + 1]) {
+      this.props.setActiveStepIndex(this.props.activeStep + 1);
+    } else {
       history.push('/completed');
-      this.props.setActiveStep(0);
+      this.props.setActiveStepIndex(0);
     }
+    if (this.props.steps[this.props.activeStep - 1])
+      this.props.setPreviousStepIndex(this.props.activeStep - 1);
   };
+
   render() {
     const step = this.props.steps[this.props.activeStep];
 
@@ -88,7 +98,7 @@ class StepContent extends Component {
                       </CardContent>
                     </Card>
                     <Grid item xs={12} style={style.progressTimer}>
-                      <StepActiveTimer next={this.timerFn} max={step.activeTime} />
+                      <StepActiveTimer next={this.timerFn} max={step.activeTime / 5} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -102,7 +112,9 @@ class StepContent extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    setActiveStep: activeStep => dispatch(setActiveStep(activeStep)),
+    setActiveStepIndex: activeStep => dispatch(setActiveStepIndex(activeStep)),
+    setPreviousStepIndex: activeStep => dispatch(setPreviousStepIndex(activeStep)),
+    addAlertTimer: (alertTimer, stepName) => dispatch(addAlertTimer(alertTimer, stepName)),
   };
 };
 

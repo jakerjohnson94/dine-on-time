@@ -1,6 +1,11 @@
-import { GET_RECIPE_BY_ID_REQUEST, GET_RECIPE_BY_ID_RESPONSE, GET_RECIPE_BY_ID_RESPONSE_ERROR } from './recipeAction';
+import {
+  GET_RECIPE_BY_ID_REQUEST,
+  GET_RECIPE_BY_ID_RESPONSE,
+  GET_RECIPE_BY_ID_RESPONSE_ERROR,
+} from './recipeAction';
 import { EATING_INPUT_TIME } from './eatingInputTimeAction';
-import { SET_ACTIVE_STEP } from './activeStepAction';
+import { SET_ACTIVE_STEP, SET_PREVIOUS_STEP } from './activeStepAction';
+import { ADD_ALERT_TIMER } from './alertTimersAction';
 const initialRecipeState = {
   fetching: false,
   recipe: '',
@@ -8,6 +13,8 @@ const initialRecipeState = {
   steps: [],
   eatingInputTime: '',
   activeStep: 0,
+  previousStep: null,
+  alertTimers: [],
 };
 
 export function recipeReducer(state = initialRecipeState, action) {
@@ -40,7 +47,20 @@ export function recipeReducer(state = initialRecipeState, action) {
         ...state,
         activeStep: action.payload,
       };
+    case SET_PREVIOUS_STEP:
+      return {
+        ...state,
+        previousStep: action.payload,
+      };
 
+    case ADD_ALERT_TIMER:
+      return {
+        ...state,
+        alertTimers: [
+          ...state.alertTimers,
+          { alertTime: action.alertTime, stepName: action.stepName },
+        ],
+      };
     default:
       return state;
   }
