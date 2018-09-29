@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RecipeIdContent from './RecipeIdContent';
 import { connect } from 'react-redux';
-import ReactLoading from 'react-loading';
 import { appBlue } from '../../resources/colors';
 import AppMenuBar from '../AppMenuBar';
 import fetchRecipeById, { fetchRecipeByURLParam } from '../../redux/recipeAction.js';

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import alertTimerBell from '../../resources/audio/alertTimerBell.wav';
 const alertSound = new Audio(alertTimerBell);
