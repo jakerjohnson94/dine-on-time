@@ -130,9 +130,3 @@ export default class StepActiveTimer extends Component {
     );
   }
 }
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     ...state,
-//     steps: state.steps,
-//   }
-// }
