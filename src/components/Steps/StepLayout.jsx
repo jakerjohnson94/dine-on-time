@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import StepContent from './StepContent';
 import AppMenuBar from '../AppMenuBar';
 import { connect } from 'react-redux';
-import AlertTimer from './AlertTimer';
+import AlertTimer from './AlertTimer/AlertTimer';
 import { setActiveStepIndex, setPreviousStepIndex } from '../../redux/activeStepAction';
+import { removeAlertTimer } from '../../redux/alertTimersAction';
 
 class StepLayout extends Component {
   componentDidMount() {
@@ -20,10 +21,9 @@ class StepLayout extends Component {
             <StepContent step={this.props.steps[this.props.activeStep]} />
           </Grid>
           <Grid item xs={12}>
-            {this.props.alertTimers.map(timer => (
+            {this.props.alertTimers.map((timer, index) => (
               <div key={timer.stepName}>
-                <Typography variant="subheading"> {timer.stepName}: </Typography>
-                <AlertTimer minutes={timer.alertTime / 60} />
+                <AlertTimer title={timer.stepName} minutes={timer.alertTime / 60} />
               </div>
             ))}
           </Grid>
@@ -37,6 +37,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setActiveStepIndex: activeStep => dispatch(setActiveStepIndex(activeStep)),
     setPreviousStepIndex: activeStep => dispatch(setPreviousStepIndex(activeStep)),
+    removeAlertTimer: timerIndex => dispatch(removeAlertTimer(timerIndex)),
   };
 };
 

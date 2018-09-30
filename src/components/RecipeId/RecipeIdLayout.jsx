@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { appBlue } from '../../resources/colors';
 import AppMenuBar from '../AppMenuBar';
 import fetchRecipeById, { fetchRecipeByURLParam } from '../../redux/recipeAction.js';
-import AnimateWhileLoading from 'react-page-loading';
 
 class RecipeIdLayout extends Component {
   componentDidMount = () => {
@@ -15,10 +14,10 @@ class RecipeIdLayout extends Component {
 
   render() {
     return (
-      <AnimateWhileLoading loader={'bar'} color={appBlue} size={8}>
+      <React.Fragment>
         <AppMenuBar />
         <RecipeIdContent />
-      </AnimateWhileLoading>
+      </React.Fragment>
     );
   }
 }

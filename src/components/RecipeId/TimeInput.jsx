@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors.js';
 import { eatingInputTimeAction } from '../../redux/eatingInputTimeAction.js';
 import { connect } from 'react-redux';
-
+import { getFormattedTime, getTotalTimeFromSteps } from '../../resources/helperFunctions';
 import ClickToStartCooking from './ClickToStartCooking.jsx';
 
 const style = {
@@ -36,9 +36,21 @@ const style = {
     padding: '.5em',
   },
 };
+const getDefaultTime = steps => {
+  const stepTime = getTotalTimeFromSteps(steps) * 60000;
+
+  const time = new Date(Date.now() + stepTime);
+  let hours = time.getHours();
+
+  let minutes = time.getMinutes();
+  minutes = minutes.toString().length === 1 ? '0' + minutes : minutes;
+
+  return `${hours}:${minutes}`;
+};
+
 class TimeInput extends Component {
   state = {
-    startTime: '17:30',
+    startTime: getDefaultTime(this.props.recipe.steps),
     isDisplayingDialog: false,
   };
 
@@ -66,7 +78,7 @@ class TimeInput extends Component {
               onChange={this.handleTimeChange}
               id="time"
               type="time"
-              defaultValue="17:30"
+              defaultValue={getDefaultTime(this.props.recipe.steps)}
             />
           </form>
           <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
@@ -81,6 +93,12 @@ class TimeInput extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    ...state,
+  };
+};
+
 // Send entered time to redux store
 const mapDispatchToProps = dispatch => {
   return {
@@ -89,6 +107,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(TimeInput);
