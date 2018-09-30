@@ -47,7 +47,7 @@ export default class AlertTimer extends Component {
       <div id="timer">
         <div id="timePiece">
           <span>
-            <Typography variant="display4">
+            <Typography variant="title">
               {Math.floor(this.state.seconds / 60)} : {('0' + (this.state.seconds % 60)).slice(-2)}
             </Typography>
           </span>

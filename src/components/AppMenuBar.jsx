@@ -48,12 +48,6 @@ class AppMenuBar extends Component {
                 <MenuItem to="/" component={Link} onClick={this.handleClose}>
                   Home
                 </MenuItem>
-                <MenuItem to="/recipe" component={Link} onClick={this.handleClose}>
-                  Recipe
-                </MenuItem>
-                <MenuItem to="/steps" onClick={this.handleClose} component={Link}>
-                  Steps
-                </MenuItem>
               </Menu>
             </div>
           </Toolbar>
