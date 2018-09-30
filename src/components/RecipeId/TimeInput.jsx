@@ -36,17 +36,22 @@ const style = {
     padding: '.5em',
   },
 };
+const getDefaultTime = steps => {
+  const stepTime = getTotalTimeFromSteps(steps) * 60000;
+
+  const time = new Date(Date.now() + stepTime);
+  let hours = time.getHours();
+
+  let minutes = time.getMinutes();
+  minutes = minutes.toString().length === 1 ? '0' + minutes : minutes;
+
+  return `${hours}:${minutes}`;
+};
+
 class TimeInput extends Component {
   state = {
-    startTime: '17:30',
+    startTime: getDefaultTime(this.props.recipe.steps),
     isDisplayingDialog: false,
-  };
-
-  getDefaultTime = () => {
-    const stepTime = getTotalTimeFromSteps(this.props.recipe.steps) * 60000;
-    const now = Date.now();
-    const time = new Date(now + stepTime);
-    return `${time.getHours()}:${time.getMinutes()}`;
   };
 
   handleTimeChange = event => {
@@ -73,7 +78,7 @@ class TimeInput extends Component {
               onChange={this.handleTimeChange}
               id="time"
               type="time"
-              defaultValue={this.getDefaultTime()}
+              defaultValue={getDefaultTime(this.props.recipe.steps)}
             />
           </form>
           <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>

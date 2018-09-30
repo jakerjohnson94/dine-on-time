@@ -2,7 +2,15 @@ import ProgressBar from 'react-bootstrap/lib/ProgressBar';
 import React, { Component } from 'react';
 import './StepActiveTimer.css';
 import audio from '../../../resources/audio/nextStepDing.ogg';
-
+import { Typography } from '@material-ui/core';
+import { appBlue } from '../../../resources/colors';
+const style = {
+  label: {
+    float: 'right',
+    fontSize: '.7em',
+    fontColor: appBlue,
+  },
+};
 export default class StepActiveTimer extends Component {
   state = {
     nextStepDing: new Audio(audio),
@@ -22,6 +30,17 @@ export default class StepActiveTimer extends Component {
       }
     }
   };
+  formatLabel = () => {
+    let time;
+    let inMins;
+    if (this.state.max - this.state.seconds > 60) {
+      time = Math.floor((this.state.max - this.state.seconds) / 60);
+      inMins = true;
+    } else {
+      inMins = false;
+    }
+    return inMins ? `${time} Minutes until next step` : `<1 Minute until next step`;
+  };
 
   // Run countdown every seconds
   componentDidMount = () => {
@@ -39,7 +58,14 @@ export default class StepActiveTimer extends Component {
   };
 
   render() {
-    return <ProgressBar max={this.state.max} now={this.state.seconds} />;
+    return (
+      <React.Fragment>
+        <ProgressBar max={this.state.max} now={this.state.seconds} />
+        <Typography variant="subheading" style={style.label}>
+          {this.formatLabel()}
+        </Typography>
+      </React.Fragment>
+    );
   }
 }
 // const mapStateToProps = (state, ownProps) => {
