@@ -61,7 +61,7 @@ class ClickToStartCooking extends Component {
         </DialogContent>
         <DialogActions>
           <Button style={{ color: appBlue, textAlign: 'center' }} onClick={this.buttonOnClick}>
-            Click to Start Cooking
+            Start Cooking
           </Button>
         </DialogActions>
       </Dialog>
