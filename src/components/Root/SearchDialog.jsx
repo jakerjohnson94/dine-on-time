@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { CircularProgress, Typography } from '@material-ui/core';
+import { CircularProgress, Typography, Hidden } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { appBlue } from '../../resources/colors';
+import { appBlue, fontGreyPrimary } from '../../resources/colors';
 import fetchRecipeById from '../../redux/recipeAction';
 
 class SearchDialog extends Component {
@@ -33,13 +33,18 @@ class SearchDialog extends Component {
   render() {
     return (
       <React.Fragment>
-        <Typography
-          style={{ color: appBlue, marginTop: '1rem' }}
-          component="p"
+        <Button
+          style={{
+            textTransform: 'none',
+            marginTop: '1rem',
+          }}
           onClick={this.handleClickOpen}
         >
-          No QR Reader? Search By Recipe Number
-        </Typography>
+          <Typography style={{ color: fontGreyPrimary }} component="p">
+            <Hidden lgUp> No QR Reader?</Hidden>{' '}
+            <span style={{ color: appBlue }}>Search By Recipe Number</span>
+          </Typography>
+        </Button>
 
         <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="search-recipe">
           {this.props.fetching ? (
