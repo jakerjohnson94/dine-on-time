@@ -41,6 +41,7 @@ const getDefaultTime = steps => {
 
   const time = new Date(Date.now() + stepTime);
   let hours = time.getHours();
+  hours = hours = hours.toString().length === 1 ? '0' + hours : hours;
 
   let minutes = time.getMinutes();
   minutes = minutes.toString().length === 1 ? '0' + minutes : minutes;
