@@ -59,8 +59,8 @@ class TimeInput extends Component {
     this.setState({ startTime: event.target.value });
   };
 
-  buttonOnClick = e => {
-    e.preventDefault();
+  buttonOnClick = event => {
+    event.preventDefault();
     this.props.sendInputTimetoStore(this.state.startTime);
     this.setState({ isDisplayingDialog: true });
   };

@@ -23,12 +23,12 @@ class ClickToStartCooking extends Component {
 
   //Converts Military Time to standardTime
   toStandardTime = militaryTime => {
-    militaryTime = militaryTime.split(':');
-
-    if (militaryTime[0] > 12) {
-      return militaryTime.join(':') + 'pm';
+    let [hours, minutes] = militaryTime.split(':');
+    if (hours > 12) {
+      hours = parseInt(hours) - 12;
+      return [hours, minutes].join(':') + 'pm';
     } else {
-      return militaryTime.join(':') + 'am';
+      return [hours, minutes].join(':') + 'am';
     }
   };
 

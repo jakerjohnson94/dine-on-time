@@ -13,7 +13,6 @@ class CompletedLayout extends Component {
           <Grid item xs={12}>
             <CompletedContent />
           </Grid>
-          <Grid item xs={12} />
         </Grid>
       </React.Fragment>
     );

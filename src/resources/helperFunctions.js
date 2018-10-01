@@ -7,7 +7,6 @@ export const getFormattedTime = time => {
   const date = new Date(time);
   const minutes = date.getMinutes();
   let hours = date.getHours();
-  let suffix = hours < 12 ? 'am' : 'pm';
   if (hours > 12) hours = hours - 12;
   if (hours < 10) hours = '0' + hours;
   return `${hours}:${minutes}`;
