@@ -48,13 +48,15 @@ export default class StepActiveTimer extends Component {
   formatLabel = () => {
     let time;
     let inMins;
+    let timeUnit = 'Minutes';
     if (this.state.max - this.state.seconds > 60) {
       time = Math.floor((this.state.max - this.state.seconds) / 60);
       inMins = true;
     } else {
       inMins = false;
     }
-    return inMins ? `${time} Minutes Until Next Step` : `<1 Minute Until Next Step`;
+    if (time === 1) timeUnit = 'Minute';
+    return inMins ? `${time} ${timeUnit} Until Next Step` : `<1 Minute Until Next Step`;
   };
 
   //toggle if timer is running. if this is the first time user clicks the pause button, an alert is displayed and they must confirm
