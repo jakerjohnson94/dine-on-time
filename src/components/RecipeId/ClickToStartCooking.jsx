@@ -25,7 +25,7 @@ class ClickToStartCooking extends Component {
   toStandardTime = militaryTime => {
     let [hours, minutes] = militaryTime.split(':');
     if (hours > 12) {
-      hours = parseInt(hours) - 12;
+      hours = parseInt(hours, 10) - 12;
       return [hours, minutes].join(':') + 'pm';
     } else if (hours.toString() === '00') {
       hours = 12;

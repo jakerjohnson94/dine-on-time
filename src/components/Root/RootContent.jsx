@@ -13,7 +13,7 @@ import scanButtonIcon from '../../resources/images/qrBtnIcon.svg';
 //local css
 import '../../App.css';
 //color pallette import
-import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
+import { appBlue, fontGreySecondary } from '../../resources/colors';
 
 //app style
 const style = {
