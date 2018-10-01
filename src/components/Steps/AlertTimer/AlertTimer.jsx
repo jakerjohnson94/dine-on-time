@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Card } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
+import { IconButton } from '@material-ui/core/';
+import ClosedIcon from '@material-ui/icons/Close';
 import alertTimerBell from '../../../resources/audio/alertTimerBell.wav';
 import './AlertTimer.css';
 const alertSound = new Audio(alertTimerBell);
@@ -61,31 +62,28 @@ export default class AlertTimer extends Component {
       <React.Fragment>
         {!this.state.isClosed ? (
           <Card id="timer" style={style.card}>
-            <div id="timePiece">
-              <Grid container justify="center" alignItems="center">
-                <Grid item xs style={{ textAlign: 'middle' }}>
-                  <Typography
-                    variant="subheading"
-                    className={this.state.alerted ? 'alerted' : null}
-                  >
-                    {this.props.title}
-                  </Typography>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography variant="title" className={this.state.alerted ? 'blink' : null}>
-                    {Math.floor(this.state.seconds / 60)}:
-                    {('0' + (this.state.seconds % 60)).slice(-2)}
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  {this.state.alerted ? (
-                    <Icon className="iconGrey" onClick={this.handleClosed}>
-                      clear
-                    </Icon>
-                  ) : null}
-                </Grid>
+            <Grid container justify="center" alignItems="center">
+              <Grid item xs style={{ textAlign: 'middle' }}>
+                <Typography variant="subheading" className={this.state.alerted ? 'alerted' : null}>
+                  {this.props.title}
+                </Typography>
               </Grid>
-            </div>
+              <Grid item xs={2}>
+                <Typography variant="title" className={this.state.alerted ? 'blink' : null}>
+                  {Math.floor(this.state.seconds / 60)}:
+                  {('0' + (this.state.seconds % 60)).slice(-2)}
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <IconButton
+                  style={!this.state.alerted ? { opacity: '0', pointerEvents: 'none' } : null}
+                  className="iconGrey"
+                  onClick={this.handleClosed}
+                >
+                  <ClosedIcon />
+                </IconButton>
+              </Grid>
+            </Grid>
           </Card>
         ) : null}
       </React.Fragment>
