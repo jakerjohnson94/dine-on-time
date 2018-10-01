@@ -66,7 +66,7 @@ class RootContent extends Component {
           </Typography>
         </Grid>
         <Grid item xs={12} lg={7}>
-          <ResponsiveRootSlider />
+          <ResponsiveRootSlider title="Dine on Time" />
         </Grid>
 
         <Hidden lgUp>

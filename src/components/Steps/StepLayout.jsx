@@ -5,7 +5,6 @@ import AppMenuBar from '../AppMenuBar';
 import { connect } from 'react-redux';
 import AlertTimer from './AlertTimer/AlertTimer';
 import { setActiveStepIndex, setPreviousStepIndex } from '../../redux/activeStepAction';
-import { removeAlertTimer } from '../../redux/alertTimersAction';
 
 class StepLayout extends Component {
   componentDidMount() {
@@ -37,7 +36,6 @@ const mapDispatchToProps = dispatch => {
   return {
     setActiveStepIndex: activeStep => dispatch(setActiveStepIndex(activeStep)),
     setPreviousStepIndex: activeStep => dispatch(setPreviousStepIndex(activeStep)),
-    removeAlertTimer: timerIndex => dispatch(removeAlertTimer(timerIndex)),
   };
 };
 

@@ -5,7 +5,7 @@ import {
 } from './recipeAction';
 import { EATING_INPUT_TIME } from './eatingInputTimeAction';
 import { SET_ACTIVE_STEP, SET_PREVIOUS_STEP } from './activeStepAction';
-import { ADD_ALERT_TIMER, REMOVE_ALERT_TIMER } from './alertTimersAction';
+import { ADD_ALERT_TIMER } from './alertTimersAction';
 
 const initialRecipeState = {
   fetching: false,
@@ -61,11 +61,6 @@ export function recipeReducer(state = initialRecipeState, action) {
           ...state.alertTimers,
           { alertTime: action.alertTime, stepName: action.stepName },
         ],
-      };
-    case REMOVE_ALERT_TIMER:
-      return {
-        ...state,
-        alertTimers: [...state.alertTimers].splice(action.timerIndex, 1),
       };
     default:
       return state;
