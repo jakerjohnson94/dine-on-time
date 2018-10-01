@@ -26,10 +26,9 @@ class ClickToStartCooking extends Component {
     militaryTime = militaryTime.split(':');
 
     if (militaryTime[0] > 12) {
-
-      return militaryTime[0] - 12 + ':' + militaryTime[1] + ' PM';
+      return militaryTime.join(':') + 'pm';
     } else {
-      return militaryTime.join(':') + ' A.M.';
+      return militaryTime.join(':') + 'am';
     }
   };
 

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import { appBlue } from '../../../resources/colors';
-import './RecipeTimelineStepper.css';
+import { appBlue } from '../../resources/colors';
+
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
 

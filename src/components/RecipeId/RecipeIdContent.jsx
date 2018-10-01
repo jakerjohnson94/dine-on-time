@@ -44,7 +44,8 @@ const style = {
   },
   ingredientImg: {
     height: '5em',
-    marginBottom: '.0',
+    marginBottom: '0',
+    paddingRight: '.3em',
   },
   centeredIngredient: {
     textAlign: 'center',
@@ -54,11 +55,13 @@ const style = {
     marginTop: '0',
     marginBottom: '.2em',
     fontSize: '1.3em',
+    paddingRight: '.3em',
   },
   ingQty: {
     marginTop: '0',
     marginBottom: '.3em',
     fontSize: '1.3em',
+    paddingRight: '.3em',
   },
   recipeInfoList: {
     marginTop: '2em',
