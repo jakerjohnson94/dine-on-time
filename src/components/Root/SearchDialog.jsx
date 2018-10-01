@@ -15,6 +15,7 @@ class SearchDialog extends Component {
   state = {
     open: false,
     recipeId: '',
+    doesIdMatch: true
   };
 
   handleClickOpen = () => {
@@ -22,12 +23,22 @@ class SearchDialog extends Component {
   };
 
   handleClose = () => {
-    if (this.state.recipeId > 0) this.props.fetchRecipe(Number(this.state.recipeId));
-    else this.setState({ open: false });
+    this.checkForIdMatch() ?  this.props.fetchRecipe(Number(this.state.recipeId)) : this.setState({doesIdMatch: false})
+
   };
 
   handleChange = e => {
-    this.setState({ recipeId: e.target.value });
+      this.setState({ recipeId: e.target.value });
+  };
+
+  checkForIdMatch = () => {
+    if (
+      this.props.allRecipes.find(
+        recipe => recipe.blueApronId === Number(this.state.recipeId)
+      )
+    ) {
+   return true;
+    }else return false
   };
 
   render() {
@@ -36,17 +47,24 @@ class SearchDialog extends Component {
         <Button
           style={{
             textTransform: 'none',
-            marginTop: '1rem',
+            marginTop: '1rem'
           }}
           onClick={this.handleClickOpen}
         >
-          <Typography style={{ color: fontGreyPrimary, fontSize: '1.2em' }} component="p">
+          <Typography
+            style={{ color: fontGreyPrimary, fontSize: '1.2em' }}
+            component="p"
+          >
             <Hidden lgUp> No QR Reader?</Hidden>{' '}
             <span style={{ color: appBlue }}>Search By Recipe Number</span>
           </Typography>
         </Button>
 
-        <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="search-recipe">
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="search-recipe"
+        >
           {this.props.fetching ? (
             <DialogContent>
               <CircularProgress />
@@ -66,6 +84,11 @@ class SearchDialog extends Component {
                   placeholder="Recipe ID"
                   fullWidth
                 />
+                {!this.state.doesIdMatch ? (
+                  <DialogContentText style={{color: '#F1948A'}}>
+                    Invalid ID, please try again
+                  </DialogContentText>
+                ) : null}
               </DialogContent>
               <DialogActions>
                 <Button onClick={this.handleClose} color="primary">
@@ -82,13 +105,13 @@ class SearchDialog extends Component {
 
 const mapStateToProps = state => {
   return {
-    ...state,
+    ...state
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId)),
+    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId))
   };
 };
 

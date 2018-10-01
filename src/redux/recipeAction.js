@@ -2,6 +2,8 @@ import history from '../history';
 
 export const GET_RECIPE_BY_ID_REQUEST = 'GET_RECIPE_BY_ID_REQUEST';
 export const GET_RECIPE_BY_ID_RESPONSE = 'GET_RECIPE_BY_ID_RESPONSE';
+export const GET_ALL_RECIPES_REQUEST = 'GET_ALL_RECIPES_REQUEST'
+export const GET_ALL_RECIPES_RESPONSE = 'GET_ALL_RECIPES_RESPONSE'
 export const GET_RECIPE_BY_ID_RESPONSE_ERROR = 'GET_RECIPE_BY_ID_RESPONSE_ERROR';
 
 const RECIPE_URL = 'https://cryptic-beach-93122.herokuapp.com/';
@@ -46,6 +48,18 @@ export function fetchRecipeByURLParam(id) {
   };
 }
 
+//get all recipes redux thunk
+export function fetchAllRecipes() {
+  return dispatch => {
+    dispatch(getAllRecipesRequest());
+    fetch(`${RECIPE_URL}recipes`)
+      .then(res=>res.json())
+      .then(data=> {
+        dispatch(getAllRecipesResponse(data))
+      })
+  }
+}
+
 //Get recipe by Id request
 const getRecipeByIdRequest = () => {
   return {
@@ -68,3 +82,19 @@ const getRecipeByIdResponseError = data => {
     payload: data,
   };
 };
+
+//Get all recipes request
+const getAllRecipesRequest = () => {
+  return {
+    type: GET_ALL_RECIPES_REQUEST,
+  }
+}
+
+//Get all recipes response
+const getAllRecipesResponse = (data) => {
+  return {
+    type: GET_ALL_RECIPES_RESPONSE,
+    payload: data
+  }
+}
+

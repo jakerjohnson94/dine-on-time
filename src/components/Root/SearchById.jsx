@@ -16,7 +16,10 @@ class SearchById extends Component {
     open: false,
     recipeId: '',
   };
+  componentWillMount(){
+  
 
+  }
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -25,11 +28,12 @@ class SearchById extends Component {
     if (this.state.recipeId > 0) this.props.fetchRecipe(Number(this.state.recipeId));
     else this.setState({ open: false });
   };
-
+  
   handleChange = e => {
     this.setState({ recipeId: e.target.value });
+    
   };
-
+  
   render() {
     return (
       <React.Fragment>
