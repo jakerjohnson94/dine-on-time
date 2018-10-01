@@ -74,9 +74,9 @@ export default class AlertTimer extends Component {
                   {('0' + (this.state.seconds % 60)).slice(-2)}
                 </Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <IconButton
-                  style={!this.state.alerted ? { opacity: '0' } : null}
+                  style={!this.state.alerted ? { opacity: '0', pointerEvents: 'none' } : null}
                   className="iconGrey"
                   onClick={this.handleClosed}
                 >
