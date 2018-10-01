@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { AppBar, Toolbar, Button, MenuItem, Menu, Icon } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import MenuIcon from '@material-ui/icons/Menu';
 const style = {
   headerBar: {
     backgroundColor: appBlue,
   },
 };
+
 class AppMenuBar extends Component {
   state = {
     anchorEl: null,

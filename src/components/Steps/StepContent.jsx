@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import StepActiveTimer from './StepActiveTimer/StepActiveTimer';
 import history from '../../history';
 import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
-import { appGreyCard } from '../../resources/colors';
 import { setActiveStepIndex, setPreviousStepIndex } from '../../redux/activeStepAction';
 import RecipeTimelineStepper from './RecipeTimelineStepper/RecipeTimelineStepper.jsx';
 import { addAlertTimer } from '../../redux/alertTimersAction';
+
 const style = {
   instructions: {
     fontSize: '1em',
@@ -30,14 +30,15 @@ const style = {
     marginTop: '1em',
   },
 };
+
 class StepContent extends Component {
   timerFn = () => {
-    this.props.previousStep && this.props.steps[this.props.previousStep].alertTime
-      ? this.props.addAlertTimer(
-          this.props.steps[this.props.previousStep].alertTime,
-          this.props.steps[this.props.previousStep].title
-        )
-      : null;
+    if ( this.props.previousStep && this.props.steps[this.props.previousStep].alertTime ) {
+      this.props.addAlertTimer(
+        this.props.steps[this.props.previousStep].alertTime,
+        this.props.steps[this.props.previousStep].title)
+    };
+
     if (this.props.steps[this.props.activeStep + 1]) {
       this.props.setActiveStepIndex(this.props.activeStep + 1);
     } else {

@@ -34,6 +34,7 @@ const style = {
     marginTop: '1em',
   },
 };
+
 class CompletedContent extends Component {
   render() {
     const recipe = this.props.recipe;
@@ -53,14 +54,14 @@ class CompletedContent extends Component {
                   </Grid>
                   <Grid item xs={12}>
                     <Typography variant="subheading" style={style.winePairingsTitle}>
-                      We Reccomend The Following Wine Pairings with this Dish:
+                      We Recommend The Following Wine Pairings with this Dish:
                     </Typography>
                   </Grid>
 
                   {winePairings.map(wine => (
                     <React.Fragment key={wine.name}>
                       <Grid item xs={2}>
-                        <img style={style.wineImg} src={wine.img} />
+                        <img alt='Recommended wine paring' style={style.wineImg} src={wine.img} />
                       </Grid>
                       <Grid item xs={4}>
                         <Grid container>
