@@ -39,7 +39,7 @@ class SearchDialog extends Component {
           variant={'outlined'}
           onClick={this.handleClickOpen}
         >
-          No QR Reader ? Click Here
+          No QR Reader? Search By Recipe Number
         </Button>
 
         <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="search-recipe">
@@ -49,7 +49,7 @@ class SearchDialog extends Component {
             </DialogContent>
           ) : (
             <React.Fragment>
-              <DialogTitle id="search-recipe">No QR Code? Search Recipe By ID</DialogTitle>
+              <DialogTitle id="search-recipe">Search Recipe By ID</DialogTitle>
               <DialogContent>
                 <DialogContentText>{this.props.text}</DialogContentText>
                 <TextField

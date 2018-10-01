@@ -38,9 +38,9 @@ class QRScanner extends Component {
   };
 
   handleScan = data => {
-    // This is hacky and only for localhost or github pages sites. 
+    // This is hacky and only for localhost or github pages sites.
     // THIS WILL NOT WORK OUTSIDE OF THOSE ENVIRONMENTS
-    if ( data && data.match(/((http|https):\/\/\w+(:3000|github\.io)\/recipe\/\d+)/ig) ) {
+    if (data && data.match(/((http|https):\/\/\w+(:3000|github\.io)\/recipe\/\d+)/gi)) {
       this.setState({
         result: data,
       });
@@ -75,7 +75,7 @@ class QRScanner extends Component {
         <Grid item xs={12}>
           <Grid container align="center" justify="center">
             <Grid item xs={12}>
-              <Button component={Link} to="/" variant="contained">
+              <Button component={Link} to="/" variant="outlined">
                 Back
               </Button>
             </Grid>

@@ -1,6 +1,14 @@
 .blink {
   animation: blink-animation 0.7s steps(5, start) infinite;
   -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  color: #b8adad !important;
+}
+.alerted {
+  text-decoration: line-through;
+  color: #b8adad !important;
+}
+.iconGrey {
+  color: #b8adad !important;
 }
 @keyframes blink-animation {
   to {

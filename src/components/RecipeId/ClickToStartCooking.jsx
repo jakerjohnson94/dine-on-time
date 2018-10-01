@@ -24,7 +24,9 @@ class ClickToStartCooking extends Component {
   //Converts Military Time to standardTime
   toStandardTime = militaryTime => {
     militaryTime = militaryTime.split(':');
-    if (militaryTime[0].charAt(0) === 1 && militaryTime[0].charAt(1) > 2) {
+
+    if (militaryTime[0] > 12) {
+
       return militaryTime[0] - 12 + ':' + militaryTime[1] + ' PM';
     } else {
       return militaryTime.join(':') + ' A.M.';
