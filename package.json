@@ -1,5 +1,6 @@
 {
   "name": "dine-on-time",
+  "homepage": "https://jakerjohnson94.github.io/dine-on-time",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +8,7 @@
     "@material-ui/icons": "^3.0.1",
     "all": "^0.0.0",
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.0",
     "history": "^4.7.2",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
@@ -25,6 +27,8 @@
     "semantic-ui-react": "^0.82.5"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
