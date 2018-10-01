@@ -53,9 +53,16 @@ class ErrorPage extends Component {
                 </Grid>
               </Grid>
               <Typography variant="subheading" style={style.subheading}>
-                We probably wrote some bad code, or you're just trying to break our app.
+                Don't feel bad, Chef Bob has problems finding lots of things.
                 <br />
-                Either way, slack Bob and tell him to fix this.
+                Check that the page exists and that you are connected to the internet. If the
+                problem persists, contact us on{' '}
+                <a
+                  style={{ textDecoration: 'none' }}
+                  href="https://github.com/jakerjohnson94/dine-on-time"
+                >
+                  Github
+                </a>
               </Typography>
             </CardContent>
           </Card>

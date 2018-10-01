@@ -13,12 +13,13 @@ import {
   DialogTitle,
 } from '@material-ui/core';
 
-import { appBlue } from '../../../resources/colors';
+import { appBlue, fontGreyPrimary } from '../../../resources/colors';
 const style = {
   label: {
     float: 'right',
     fontSize: '.7em',
-    fontColor: appBlue,
+    color: fontGreyPrimary,
+    paddingTop: '1em',
   },
 };
 export default class StepActiveTimer extends Component {
@@ -42,6 +43,8 @@ export default class StepActiveTimer extends Component {
       }
     }
   };
+
+  //round to nearest minute to display to user
   formatLabel = () => {
     let time;
     let inMins;
@@ -51,9 +54,10 @@ export default class StepActiveTimer extends Component {
     } else {
       inMins = false;
     }
-    return inMins ? `${time} Minutes until next step` : `<1 Minute until next step`;
+    return inMins ? `${time} Minutes Until Next Step` : `<1 Minute Until Next Step`;
   };
 
+  //toggle if timer is running. if this is the first time user clicks the pause button, an alert is displayed and they must confirm
   handlePause = () => {
     if (!this.state.showAlert)
       this.state.isRunning
@@ -95,7 +99,6 @@ export default class StepActiveTimer extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* dialog */}
         <div>
           <Dialog
             open={this.state.alertOpen}
@@ -120,7 +123,7 @@ export default class StepActiveTimer extends Component {
           </Dialog>
         </div>
         <ProgressBar max={this.state.max} now={this.state.seconds} />
-        <Typography variant="subheading" style={style.label}>
+        <Typography component="p" style={style.label}>
           {this.formatLabel()}
         </Typography>
         <Button>

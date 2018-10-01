@@ -65,7 +65,12 @@ export default class AlertTimer extends Component {
             <div id="timePiece">
               <Grid container justify="center" alignItems="center">
                 <Grid item xs style={{ textAlign: 'middle' }}>
-                  <Typography variant="subheading">{this.props.title}</Typography>
+                  <Typography
+                    variant="subheading"
+                    className={this.state.alerted ? 'alerted' : null}
+                  >
+                    {this.props.title}
+                  </Typography>
                 </Grid>
                 <Grid item xs={2}>
                   <Typography variant="title" className={this.state.alerted ? 'blink' : null}>
@@ -74,7 +79,11 @@ export default class AlertTimer extends Component {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  {this.state.alerted ? <Icon onClick={this.handleClosed}>clear</Icon> : null}
+                  {this.state.alerted ? (
+                    <Icon className="iconGrey" onClick={this.handleClosed}>
+                      clear
+                    </Icon>
+                  ) : null}
                 </Grid>
               </Grid>
             </div>
