@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //middleware
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 //user components
 import RootLayout from './components/Root/RootLayout';
 import RecipeIdLayout from './components/RecipeId/RecipeIdLayout';
@@ -20,14 +21,20 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={RootLayout} />
         <Route exact path="/scanner" component={QRScannerLayout} />
-        <Route exact path="/recipe" component={RecipeIdLayout} />
-        <Route path="/recipe/:id"  component={RecipeIdLayout} />
-        <Route path="/steps" component={StepLayout} />
-        <Route path="/completed" component={CompletedLayout} />
+        <Route exact path="/recipe" component={ this.props.recipe.title ? RecipeIdLayout : ErrorPage } />
+        <Route path="/recipe/:id"  component={ this.props.recipe.title ? RecipeIdLayout : ErrorPage } />
+        <Route path="/steps" component={ this.props.recipe.title ? StepLayout : ErrorPage } />
+        <Route path="/completed" component={ this.props.recipe.title ? CompletedLayout : ErrorPage } />
         <Route component={ErrorPage} />
       </Switch>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    ...state,
+  };
+};
+
+export default connect( mapStateToProps, undefined)(App);

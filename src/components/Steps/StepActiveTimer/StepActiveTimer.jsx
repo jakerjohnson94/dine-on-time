@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from '@material-ui/core';
 
-import { appBlue, fontGreyPrimary } from '../../../resources/colors';
+import { fontGreyPrimary } from '../../../resources/colors';
 const style = {
   label: {
     float: 'right',

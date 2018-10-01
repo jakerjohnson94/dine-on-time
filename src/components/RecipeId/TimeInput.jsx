@@ -9,7 +9,7 @@ import { Icon } from '@material-ui/core';
 import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors.js';
 import { eatingInputTimeAction } from '../../redux/eatingInputTimeAction.js';
 import { connect } from 'react-redux';
-import { getFormattedTime, getTotalTimeFromSteps } from '../../resources/helperFunctions';
+import { getTotalTimeFromSteps } from '../../resources/helperFunctions';
 import ClickToStartCooking from './ClickToStartCooking.jsx';
 
 const style = {
