@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path={process.env.PUBLIC_URL + '/'} component={RootLayout} />
+        <Route exact path='/' component={RootLayout} />
         <Route exact path="/scanner" component={QRScannerLayout} />
         <Route exact path="/recipe" component={RecipeIdLayout} />
         <Route path="/recipe/:id"  component={RecipeIdLayout} />

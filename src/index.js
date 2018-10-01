@@ -11,10 +11,13 @@ import history from './history';
 
 ReactDOM.render(
   <Provider store={store}>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Router history={history}>
       <App />
     </Router>
-  </Provider>,
+    </BrowserRouter>
+  </Provider>
+  
   document.getElementById('root')
 );
 registerServiceWorker();
