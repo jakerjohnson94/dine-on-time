@@ -33,13 +33,17 @@ class SearchDialog extends Component {
   render() {
     return (
       <React.Fragment>
-        <Typography
-          style={{ color: appBlue, marginTop: '1rem' }}
-          component="p"
+        <Button
+          style={{
+            textTransform: 'none',
+            marginTop: '1rem',
+          }}
           onClick={this.handleClickOpen}
         >
-          No QR Reader? Search By Recipe Number
-        </Typography>
+          <Typography style={{ color: appBlue }} component="p">
+            No QR Reader? Search By Recipe Number
+          </Typography>
+        </Button>
 
         <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="search-recipe">
           {this.props.fetching ? (
