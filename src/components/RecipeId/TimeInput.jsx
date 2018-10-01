@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import { Icon } from '@material-ui/core';
 
 import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors.js';
 import { eatingInputTimeAction } from '../../redux/eatingInputTimeAction.js';
@@ -82,8 +83,8 @@ class TimeInput extends Component {
               defaultValue={getDefaultTime(this.props.recipe.steps)}
             />
           </form>
-          <Button style={{ color: appBlue }} onClick={this.buttonOnClick}>
-            GO
+          <Button style={{ color: appBlue }} variant="outlined" onClick={this.buttonOnClick}>
+            <Icon component="h1">arrow_right_alt</Icon>
           </Button>
         </Paper>
         {this.state.isDisplayingDialog ? (

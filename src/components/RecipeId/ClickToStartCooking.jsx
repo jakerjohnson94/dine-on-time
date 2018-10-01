@@ -27,6 +27,9 @@ class ClickToStartCooking extends Component {
     if (hours > 12) {
       hours = parseInt(hours) - 12;
       return [hours, minutes].join(':') + 'pm';
+    } else if (hours.toString() === '00') {
+      hours = 12;
+      return [hours, minutes].join(':') + 'am';
     } else {
       return [hours, minutes].join(':') + 'am';
     }
@@ -61,7 +64,11 @@ class ClickToStartCooking extends Component {
           <span style={style.bold}>{this.toStandardTime(this.props.eatingInputTime)}</span>
         </DialogContent>
         <DialogActions>
-          <Button style={{ color: appBlue, textAlign: 'center' }} onClick={this.buttonOnClick}>
+          <Button
+            variant="outlined"
+            style={{ color: appBlue, textAlign: 'center', textTransform: 'none' }}
+            onClick={this.buttonOnClick}
+          >
             Start Cooking
           </Button>
         </DialogActions>
