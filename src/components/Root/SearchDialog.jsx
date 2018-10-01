@@ -40,7 +40,7 @@ class SearchDialog extends Component {
           }}
           onClick={this.handleClickOpen}
         >
-          <Typography style={{ color: fontGreyPrimary }} component="p">
+          <Typography style={{ color: fontGreyPrimary, fontSize: '1.2em' }} component="p">
             <Hidden lgUp> No QR Reader?</Hidden>{' '}
             <span style={{ color: appBlue }}>Search By Recipe Number</span>
           </Typography>
