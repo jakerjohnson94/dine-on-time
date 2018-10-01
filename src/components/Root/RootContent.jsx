@@ -5,6 +5,8 @@ import { Typography, Grid, Hidden, Button } from '@material-ui/core';
 import ResponsiveRootSlider from './ResponsiveSlider';
 //local components
 import SearchDialog from './SearchDialog';
+import {connect} from 'react-redux'
+import {fetchAllRecipes} from '../../redux/recipeAction'
 
 // icons
 // local images
@@ -13,65 +15,72 @@ import scanButtonIcon from '../../resources/images/qrBtnIcon.svg';
 //local css
 import '../../App.css';
 //color pallette import
-import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
+import {
+  appBlue,
+  fontGreyPrimary,
+  fontGreySecondary
+} from '../../resources/colors';
 
 //app style
 const style = {
   centerText: {
     textAlign: 'center',
     fontSize: '.7em',
-    color: fontGreySecondary,
+    color: fontGreySecondary
   },
   scanText: {
     textAlign: 'center',
     fontSize: '1.2em',
     color: appBlue,
-    paddingBottom: '1em',
+    paddingBottom: '1em'
   },
   scanTextDesktop: {
     textAlign: 'center',
     fontSize: '1.2em',
     color: appBlue,
     paddingBottom: '1em',
-    paddingTop: '1.5em',
+    paddingTop: '1.5em'
   },
   titleHeader: {
     marginTop: '.5em',
     marginBottom: '.25em',
 
-    color: appBlue,
+    color: appBlue
   },
   titleSubHeader: {
     marginBottom: '2em',
     fontSize: '.9em',
-    color: fontGreySecondary,
+    color: fontGreySecondary
   },
   centerContent: {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: '.5em',
+    paddingTop: '.5em'
   },
   link: {
-    color: appBlue,
+    color: appBlue
   },
   infoHeadline: {
-    fontSize: '1.2em',
+    fontSize: '1.2em'
   },
   scannerButton: {
     textTransform: 'none',
     marginTop: '1rem',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   scannerContainer: {
     display: 'flex',
-    flexDirection: 'column',
-  },
+    flexDirection: 'column'
+  }
 };
 
 class RootContent extends Component {
+  componentDidMount(){
+    this.props.fetchAllRecipes()
+  }
   render() {
     return (
       <Grid alignItems="center" justify="center" container>
@@ -79,7 +88,12 @@ class RootContent extends Component {
           <ResponsiveRootSlider title="Dine on Time" />
         </Grid>
         <Grid item xs={12}>
-          <Typography style={style.titleHeader} variant="display2" gutterBottom align="center">
+          <Typography
+            style={style.titleHeader}
+            variant="display2"
+            gutterBottom
+            align="center"
+          >
             Dine on Time
           </Typography>
         </Grid>
@@ -120,7 +134,19 @@ class RootContent extends Component {
   }
 }
 
-export default RootContent;
+const mapStateToProps = state => {
+  return {
+    ...state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAllRecipes: () => dispatch(fetchAllRecipes())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RootContent);
 
 // <Grid item xs={12}>
 //   <Typography variant="display1" component="h1" style={style.infoHeadline}>
