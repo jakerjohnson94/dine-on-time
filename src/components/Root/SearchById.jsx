@@ -11,29 +11,29 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { appBlue } from '../../resources/colors';
 import fetchRecipeById from '../../redux/recipeAction';
 
+const style = {
+  helpButton: {},
+};
 class SearchById extends Component {
   state = {
     open: false,
     recipeId: '',
   };
-  componentWillMount(){
-  
 
-  }
   handleClickOpen = () => {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
+  handleAlertClose = () => {
     if (this.state.recipeId > 0) this.props.fetchRecipe(Number(this.state.recipeId));
     else this.setState({ open: false });
   };
-  
-  handleChange = e => {
+
+  handleInputChange = e => {
     this.setState({ recipeId: e.target.value });
-    
   };
-  
+  handleHelpClick = () => {};
+
   render() {
     return (
       <React.Fragment>
@@ -42,32 +42,41 @@ class SearchById extends Component {
           variant={'outlined'}
           onClick={this.handleClickOpen}
         >
-          No QR Reader? Search By Recipe Number
+          No QR reader? Search by Recipe Number
         </Button>
 
-        <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="search-recipe">
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleAlertClose}
+          aria-labelledby="search-recipe"
+        >
           {this.props.fetching ? (
             <DialogContent>
               <CircularProgress />
             </DialogContent>
           ) : (
             <React.Fragment>
-              <DialogTitle id="search-recipe">Search Recipe By ID</DialogTitle>
+              <DialogTitle id="search-recipe">Search Recipe By Number</DialogTitle>
               <DialogContent>
                 <DialogContentText>{this.props.text}</DialogContentText>
                 <TextField
                   value={this.state.recipeId}
-                  onChange={this.handleChange}
+                  onChange={this.handleInputChange}
                   autoFocus
                   margin="dense"
                   id="recipeId"
                   type="text"
-                  placeholder="Recipe ID"
+                  placeholder="Recipe Number"
                   fullWidth
                 />
               </DialogContent>
+              <DialogContent>
+                <Button style={style.helpButton} onClick={this.handleHelpClick}>
+                  Trouble finding the Recipe Number?
+                </Button>
+              </DialogContent>
               <DialogActions>
-                <Button onClick={this.handleClose} color="primary">
+                <Button onClick={this.handleAlertClose} color="primary">
                   Search
                 </Button>
               </DialogActions>

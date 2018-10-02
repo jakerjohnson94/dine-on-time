@@ -26,6 +26,8 @@ const style = {
   titleCard: {
     width: '100%',
     marginBottom: '.5em',
+
+    borderRadius: '0px',
   },
 
   recipeName: {
@@ -38,7 +40,7 @@ const style = {
     fontSize: '1.1em',
   },
   recipeSubtitle: {
-    color: fontGreyPrimary,
+    color: fontGreySecondary,
     textAlign: 'center',
     paddingBottom: '.2em',
   },

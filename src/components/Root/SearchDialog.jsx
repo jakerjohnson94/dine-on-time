@@ -14,31 +14,33 @@ import fetchRecipeById from '../../redux/recipeAction';
 class SearchDialog extends Component {
   state = {
     open: false,
-    recipeId: '',
-    doesIdMatch: true
+    recipeIdInput: '',
+    doesIdMatch: true,
   };
 
   handleClickOpen = () => {
     this.setState({ open: true });
   };
 
+  handleSubmit = () => {
+    this.checkForIdMatch()
+      ? this.props.fetchRecipe(Number(this.state.recipeIdInput))
+      : this.setState({ doesIdMatch: false });
+  };
   handleClose = () => {
-    this.checkForIdMatch() ?  this.props.fetchRecipe(Number(this.state.recipeId)) : this.setState({doesIdMatch: false})
-
+    this.setState({ open: false, doesIdMatch: true, recipeIdInput: '' });
   };
 
   handleChange = e => {
-      this.setState({ recipeId: e.target.value });
+    this.setState({ recipeIdInput: e.target.value });
   };
 
   checkForIdMatch = () => {
     if (
-      this.props.allRecipes.find(
-        recipe => recipe.blueApronId === Number(this.state.recipeId)
-      )
+      this.props.allRecipes.find(recipe => recipe.blueApronId === Number(this.state.recipeIdInput))
     ) {
-   return true;
-    }else return false
+      return true;
+    } else return false;
   };
 
   render() {
@@ -47,24 +49,17 @@ class SearchDialog extends Component {
         <Button
           style={{
             textTransform: 'none',
-            marginTop: '1rem'
+            marginTop: '1rem',
           }}
           onClick={this.handleClickOpen}
         >
-          <Typography
-            style={{ color: fontGreyPrimary, fontSize: '1.2em' }}
-            component="p"
-          >
+          <Typography style={{ color: fontGreyPrimary, fontSize: '1.2em' }} component="p">
             <Hidden lgUp> No QR Reader?</Hidden>{' '}
             <span style={{ color: appBlue }}>Search By Recipe Number</span>
           </Typography>
         </Button>
 
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="search-recipe"
-        >
+        <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="search-recipe">
           {this.props.fetching ? (
             <DialogContent>
               <CircularProgress />
@@ -75,23 +70,23 @@ class SearchDialog extends Component {
               <DialogContent>
                 <DialogContentText>{this.props.text}</DialogContentText>
                 <TextField
-                  value={this.state.recipeId}
+                  value={this.state.recipeIdInput}
                   onChange={this.handleChange}
                   autoFocus
                   margin="dense"
-                  id="recipeId"
+                  id="recipeIdInput"
                   type="text"
                   placeholder="Recipe ID"
                   fullWidth
                 />
                 {!this.state.doesIdMatch ? (
-                  <DialogContentText style={{color: '#F1948A'}}>
+                  <DialogContentText style={{ color: '#F1948A' }}>
                     Invalid ID, please try again
                   </DialogContentText>
                 ) : null}
               </DialogContent>
               <DialogActions>
-                <Button onClick={this.handleClose} color="primary">
+                <Button onClick={this.handleSubmit} style={{ color: appBlue }}>
                   Search
                 </Button>
               </DialogActions>
@@ -105,13 +100,13 @@ class SearchDialog extends Component {
 
 const mapStateToProps = state => {
   return {
-    ...state
+    ...state,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchRecipe: recipeId => dispatch(fetchRecipeById(recipeId))
+    fetchRecipe: recipeIdInput => dispatch(fetchRecipeById(recipeIdInput)),
   };
 };
 
