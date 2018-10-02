@@ -83,7 +83,7 @@ class StepContent extends Component {
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography variant="subheading" style={style.ingredientsTitle}>
+                    <Typography variant="title" style={style.ingredientsTitle}>
                       Ingredients:
                     </Typography>
                   </Grid>
@@ -92,7 +92,6 @@ class StepContent extends Component {
                       <CardContent style={{ padding: '.8em' }}>
                         {step.ingredientsRequired.map(ing => (
                           <Chip
-                            variant="outlined"
                             style={{ color: appBlue, margin: '.25em' }}
                             key={ing.name}
                             label={ing.name}
