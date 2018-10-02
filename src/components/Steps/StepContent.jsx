@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StepActiveTimer from './StepActiveTimer/StepActiveTimer';
 import history from '../../history';
-import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
+import { Typography, Grid, Card, CardMedia, CardContent, Chip } from '@material-ui/core';
 import { setActiveStepIndex, setPreviousStepIndex } from '../../redux/activeStepAction';
 import RecipeTimelineStepper from './RecipeTimelineStepper.jsx';
 import { addAlertTimer } from '../../redux/alertTimersAction';
+import { appBlue } from '../../resources/colors';
 
 const style = {
   instructions: {
@@ -15,7 +16,9 @@ const style = {
   stepImage: {
     height: '30vh',
   },
-  ingredientListCard: {},
+  ingredientListCard: {
+    textAlign: 'center',
+  },
   singleIngredientCard: {
     border: '3px solid grey',
     borderRadius: '6px',
@@ -86,20 +89,19 @@ class StepContent extends Component {
                   </Grid>
                   <Grid item xs={12}>
                     <Card style={style.ingredientListCard}>
-                      <CardContent>
-                        <Grid container spacing={8} alignItems="center" justify="space-around">
-                          {step.ingredientsRequired.map(ing => (
-                            <Grid key={ing.name} item xs>
-                              <Card elevation={0} style={style.singleIngredientCard}>
-                                <Typography component="p">{ing.name}</Typography>
-                              </Card>
-                            </Grid>
-                          ))}
-                        </Grid>
+                      <CardContent style={{ padding: '.8em' }}>
+                        {step.ingredientsRequired.map(ing => (
+                          <Chip
+                            variant="outlined"
+                            style={{ color: appBlue, margin: '.25em' }}
+                            key={ing.name}
+                            label={ing.name}
+                          />
+                        ))}
                       </CardContent>
                     </Card>
                     <Grid item xs={12} style={style.progressTimer}>
-                      <StepActiveTimer next={this.timerFn} max={step.activeTime / 60} />
+                      <StepActiveTimer next={this.timerFn} max={step.activeTime} />
                     </Grid>
                   </Grid>
                 </Grid>

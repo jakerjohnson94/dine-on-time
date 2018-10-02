@@ -21,7 +21,7 @@ class StepLayout extends Component {
               <Grid item xs={12}>
                 {this.props.alertTimers.map((timer, index) => (
                   <div key={timer.stepName}>
-                    <AlertTimer title={timer.stepName} minutes={timer.alertTime / 60} />
+                    <AlertTimer title={timer.stepName} minutes={timer.alertTime} />
                   </div>
                 ))}
               </Grid>
