@@ -57,10 +57,6 @@ class AppMenuBar extends Component {
                 <MenuItem to="/" component={Link} onClick={this.handleHomeClick}>
                   Home
                 </MenuItem>
-
-                <MenuItem to="/scanner" component={Link} onClick={this.handleMenuClick}>
-                  Back
-                </MenuItem>
               </Menu>
             </div>
           </Toolbar>
