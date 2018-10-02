@@ -2,6 +2,7 @@ import { appBlue } from '../resources/colors';
 import React, { Component } from 'react';
 import { AppBar, Toolbar, Button, MenuItem, Menu, Icon } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import history from '../history';
 
 const style = {
   headerBar: {
@@ -24,7 +25,15 @@ class AppMenuBar extends Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+  handleMenuClick = () => {
+    history.goBack();
+    this.setState({ anchorEl: null });
+  };
 
+  handleHomeClick = () => {
+    history.push('/home');
+    this.setState({ anchorEl: null });
+  };
   render() {
     const { anchorEl } = this.state;
     return (
@@ -45,11 +54,12 @@ class AppMenuBar extends Component {
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
               >
-                <MenuItem to="/" component={Link} onClick={this.handleClose}>
+                <MenuItem to="/" component={Link} onClick={this.handleHomeClick}>
                   Home
                 </MenuItem>
-                <MenuItem to="/scanner" component={Link} onClick={this.handleClose}>
-                  Scanner
+
+                <MenuItem to="/scanner" component={Link} onClick={this.handleMenuClick}>
+                  Back
                 </MenuItem>
               </Menu>
             </div>
