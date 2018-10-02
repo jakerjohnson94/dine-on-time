@@ -62,6 +62,8 @@ const style = {
   scannerButton: {
     textTransform: 'none',
     marginTop: '1rem',
+    marginBottom: '0',
+    padding: '0',
     display: 'flex',
     flexDirection: 'column',
   },

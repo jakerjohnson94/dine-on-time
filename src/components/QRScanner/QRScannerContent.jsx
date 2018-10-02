@@ -40,7 +40,8 @@ class QRScanner extends Component {
   handleScan = data => {
     // This is hacky and only for localhost or github pages sites.
     // THIS WILL NOT WORK OUTSIDE OF THOSE ENVIRONMENTS
-    if (data && data.match(/((http|https):\/\/\w+(:3000|github\.io)\/recipe\/\d+)/gi)) {
+    // if (data && data.match(/((http|https):\/\/\w+(:3000|github\.io)\/recipe\/\d+)/gi)) {
+    if (data) {
       this.setState({
         result: data,
       });

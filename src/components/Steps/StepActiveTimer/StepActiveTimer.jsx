@@ -17,7 +17,7 @@ import { appBlue, fontGreyPrimary } from '../../../resources/colors';
 const style = {
   label: {
     float: 'right',
-    fontSize: '.7em',
+    fontSize: '1em',
     color: fontGreyPrimary,
     paddingTop: '1em',
   },
@@ -128,7 +128,7 @@ export default class StepActiveTimer extends Component {
         <Typography component="p" style={style.label}>
           {this.formatLabel()}
         </Typography>
-        <Button>
+        <Button variant="outlined" style={{ marginTop: '1em', padding: '.5em' }}>
           <Icon onClick={this.handlePause}>{this.state.isRunning ? 'pause' : 'play_arrow'}</Icon>
         </Button>
       </React.Fragment>

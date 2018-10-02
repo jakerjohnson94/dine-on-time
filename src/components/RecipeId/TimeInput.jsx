@@ -84,7 +84,7 @@ class TimeInput extends Component {
             />
           </form>
           <Button style={{ color: appBlue }} variant="outlined" onClick={this.buttonOnClick}>
-            <Icon component="h1">arrow_right_alt</Icon>
+            <Icon component="h1">forward</Icon>
           </Button>
         </Paper>
         {this.state.isDisplayingDialog ? (
