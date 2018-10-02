@@ -7,6 +7,9 @@ const style = {
   headerBar: {
     backgroundColor: appBlue,
   },
+  headerIcon: {
+    color: 'white',
+  },
 };
 
 class AppMenuBar extends Component {
@@ -34,7 +37,7 @@ class AppMenuBar extends Component {
                 aria-haspopup="true"
                 onClick={this.handleClick}
               >
-                <Icon style={{ color: 'white' }}>menu</Icon>
+                <Icon style={style.headerIcon}>local_dining</Icon>
               </Button>
               <Menu
                 id="simple-menu"
@@ -42,11 +45,11 @@ class AppMenuBar extends Component {
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
               >
-                <MenuItem to="/scanner" component={Link} onClick={this.handleClose}>
-                  Scanner
-                </MenuItem>
                 <MenuItem to="/" component={Link} onClick={this.handleClose}>
                   Home
+                </MenuItem>
+                <MenuItem to="/scanner" component={Link} onClick={this.handleClose}>
+                  Scanner
                 </MenuItem>
               </Menu>
             </div>
