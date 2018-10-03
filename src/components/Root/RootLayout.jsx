@@ -23,7 +23,8 @@ import { appBlue, fontGreySecondary } from '../../resources/colors';
 //app style
 const style = {
   content: {
-    height: '100vh',
+    height: '100%',
+    position: 'relative',
   },
   centerContent: {
     width: '100%',

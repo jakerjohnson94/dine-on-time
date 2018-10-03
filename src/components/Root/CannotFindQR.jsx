@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import helpFindingQr from '../../resources/images/helpFindingQr.png';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle
-} from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 
 import { fontGreyPrimary, fontGreySecondary, appBlue } from '../../resources/colors';
 
@@ -17,7 +11,8 @@ const style = {
     textTransform: 'none',
     width: '100%',
     color: fontGreySecondary,
-    marginTop: '5em',
+    marginTop: '3em',
+    marginBottom: '3em',
   },
 };
 
@@ -41,7 +36,9 @@ class CannotFindQR extends Component {
           Need Help Finding QR Code or Recipe ID Number?
         </Button>
         <Dialog open={this.state.isOpen}>
-          <DialogContent><img style={{width: '15rem'}} src={helpFindingQr}/></DialogContent>
+          <DialogContent>
+            <img style={{ width: '15rem' }} src={helpFindingQr} />
+          </DialogContent>
           <Button onClick={this.handleClose}>Close</Button>
         </Dialog>
       </React.Fragment>
