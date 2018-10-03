@@ -5,7 +5,11 @@ import {Typography} from '@material-ui/core'
 //local compontens
 import AppMenuBar from '../AppMenuBar';
 import RootContent from './RootContent';
+
 import CannotFindQR from './CannotFindQR'
+import { clearAlertTimers } from '../../redux/alertTimersAction';
+import { connect } from 'react-redux';
+
 // icons
 
 // local images
@@ -20,6 +24,9 @@ const style = {
   content: {}
 };
 class RootLayout extends Component {
+  componentDidMount() {
+    this.props.clearAlertTimers();
+  }
   render() {
     return (
       <AnimateWhileLoading loader={'bar'} color={appBlue} size={8}>
@@ -30,4 +37,14 @@ class RootLayout extends Component {
   }
 }
 
-export default RootLayout;
+const mapDispatchToProps = dispatch => {
+  return {
+    clearAlertTimers: () => {
+      dispatch(clearAlertTimers());
+    },
+  };
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(RootLayout);

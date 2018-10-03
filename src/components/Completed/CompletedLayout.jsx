@@ -3,8 +3,12 @@ import CompletedContent from './CompletedContent';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import AppMenuBar from '../AppMenuBar';
+import { clearAlertTimers } from '../../redux/alertTimersAction';
 
 class CompletedLayout extends Component {
+  componentWillUnmount() {
+    this.props.clearAlertTimers();
+  }
   render() {
     return (
       <React.Fragment>
@@ -18,11 +22,20 @@ class CompletedLayout extends Component {
     );
   }
 }
-
+const mapDispatchToProps = dispatch => {
+  return {
+    clearAlertTimers: () => {
+      dispatch(clearAlertTimers());
+    },
+  };
+};
 const mapStateToProps = state => {
   return {
     ...state,
   };
 };
 
-export default connect(mapStateToProps)(CompletedLayout);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CompletedLayout);
