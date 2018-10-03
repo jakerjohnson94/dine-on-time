@@ -70,6 +70,7 @@ export function recipeReducer(state = initialRecipeState, action) {
         ...state,
         alertTimers: [],
         previousStep: null,
+        activeStep: 0,
       };
     case GET_ALL_RECIPES_REQUEST:
       return {
