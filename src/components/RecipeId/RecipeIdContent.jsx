@@ -42,7 +42,7 @@ const style = {
   recipeSubtitle: {
     color: fontGreySecondary,
     textAlign: 'center',
-    paddingBottom: '.2em',
+    padding: '.2em',
   },
   ingredientImg: {
     height: '5em',

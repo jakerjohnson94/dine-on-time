@@ -16,54 +16,50 @@ import scanButtonIcon from '../../resources/images/qrBtnIcon.svg';
 //local css
 import '../../App.css';
 //color pallette import
-import {
-  appBlue,
-  fontGreyPrimary,
-  fontGreySecondary
-} from '../../resources/colors';
+import { appBlue, fontGreyPrimary, fontGreySecondary } from '../../resources/colors';
 
 //app style
 const style = {
   centerText: {
     textAlign: 'center',
     fontSize: '.7em',
-    color: fontGreySecondary
+    color: fontGreySecondary,
   },
   scanText: {
     textAlign: 'center',
     fontSize: '1.2em',
     color: appBlue,
-    paddingBottom: '1em'
+    paddingBottom: '1em',
   },
   scanTextDesktop: {
     textAlign: 'center',
     fontSize: '1.2em',
-    color: appBlue
+    color: appBlue,
   },
   titleHeader: {
     marginTop: '.5em',
     marginBottom: '.25em',
     fontFamily: 'Dosis, sans-serif',
     fontWeight: '500',
-    color: appBlue
+    color: appBlue,
   },
   titleSubHeader: {
     marginBottom: '2em',
     fontSize: '.9em',
-    color: fontGreySecondary
+    color: fontGreySecondary,
   },
   centerContent: {
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingTop: '.5em'
+    paddingTop: '.5em',
   },
   link: {
-    color: appBlue
+    color: appBlue,
   },
   infoHeadline: {
-    fontSize: '1.2em'
+    fontSize: '1.2em',
   },
   scannerButton: {
     textTransform: 'none',
@@ -71,11 +67,11 @@ const style = {
     marginBottom: '0',
     padding: '0',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   scannerContainer: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   appParagraph: {
     fontStyle: 'italic',
@@ -83,8 +79,8 @@ const style = {
     marginRight: '1.5rem',
     color: fontGreySecondary,
     textAlign: 'center',
-    fontSize: '0.7em'
-  }
+    fontSize: '0.7em',
+  },
 };
 
 class RootContent extends Component {
@@ -93,68 +89,60 @@ class RootContent extends Component {
   }
   render() {
     return (
-      <Grid alignItems="center" justify="center" container>
-        <Grid item xs={12} lg={7}>
-          <ResponsiveRootSlider title="Dine on Time" />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography
-            style={style.titleHeader}
-            variant="headline"
-            gutterBottom
-            align="center"
-          >
-            We're with you every step of the way!
-          </Typography>
-        </Grid>
+      <React.Fragment>
+        <Grid alignItems="center" justify="center" container>
+          <Grid item xs={12} lg={7}>
+            <ResponsiveRootSlider title="Dine on Time" />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography style={style.titleHeader} variant="headline" gutterBottom align="center">
+              We're with you every step of the way!
+            </Typography>
+          </Grid>
 
-        <Hidden lgUp>
-          <Grid item xs style={style.scannerContainer}>
-            <Button component={Link} style={style.scannerButton} to="/scanner">
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                style={style.scannerContainer}
-                alignItems="center"
-              >
-                <Grid item xs={12}>
-                  <img alt="camera icon" src={scanButtonIcon} />
+          <Hidden lgUp>
+            <Grid item xs style={style.scannerContainer}>
+              <Button component={Link} style={style.scannerButton} to="/scanner">
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  style={style.scannerContainer}
+                  alignItems="center"
+                >
+                  <Grid item xs={12}>
+                    <img alt="camera icon" src={scanButtonIcon} />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography style={style.scanText} variant="subheading">
+                      Scan A Recipe Code
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <Typography style={style.scanText} variant="subheading">
-                    Scan A Recipe Code
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Button>
+              </Button>
+            </Grid>
+          </Hidden>
+          <Grid style={style.centerContent} item xs={12}>
+            <SearchDialog text="Search Recipe" />
+          </Grid>
+          <Grid item xs={12}>
             <CannotFindQR />
           </Grid>
-        </Hidden>
-        <Grid style={style.centerContent} item xs={12}>
-          <SearchDialog text="Search Recipe" />
         </Grid>
-        <Grid style={style.centerContent} item xs={12}>
-          <Typography style={style.appParagraph} variant="body1">
-            Dine On Time was created to be used in association with meal-kit delivery services like Blue Apron,
-            scan your QR code or input the recipe ID to get step by step
-            instructions with timers and alerts. Don't dine alone, Dine On Time!
-          </Typography>
-        </Grid>
-      </Grid>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    ...state
+    ...state,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllRecipes: () => dispatch(fetchAllRecipes())
+    fetchAllRecipes: () => dispatch(fetchAllRecipes()),
   };
 };
 
