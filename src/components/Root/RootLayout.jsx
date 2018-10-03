@@ -37,6 +37,7 @@ const style = {
     color: fontGreySecondary,
     textAlign: 'center',
     fontSize: '1em',
+    marginBottom: '1em',
   },
 };
 class RootLayout extends Component {
