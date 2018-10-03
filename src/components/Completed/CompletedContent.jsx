@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
 import { appBlue, fontGreyPrimary } from '../../resources/colors';
-// import sampleRecipe from './sampleRecipe.json';
 
 const style = {
   instructions: {
