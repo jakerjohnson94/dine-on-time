@@ -49,7 +49,7 @@ class SearchDialog extends Component {
         <Button
           style={{
             textTransform: 'none',
-            marginTop: '1rem',
+            marginTop: '0',
           }}
           onClick={this.handleClickOpen}
         >

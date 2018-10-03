@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 // css components
 import AnimateWhileLoading from 'react-page-loading';
+import {Typography} from '@material-ui/core'
 //local compontens
 import AppMenuBar from '../AppMenuBar';
 import RootContent from './RootContent';
+
+import CannotFindQR from './CannotFindQR'
 import { clearAlertTimers } from '../../redux/alertTimersAction';
 import { connect } from 'react-redux';
+
 // icons
 
 // local images
@@ -17,7 +21,7 @@ import { appBlue } from '../../resources/colors';
 // import { appBlue, fontGreyPrimary, fontGreySecondary } from '../resources/colors';
 //app style
 const style = {
-  content: {},
+  content: {}
 };
 class RootLayout extends Component {
   componentDidMount() {
