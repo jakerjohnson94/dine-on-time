@@ -3,12 +3,11 @@ import {
   GET_RECIPE_BY_ID_RESPONSE,
   GET_RECIPE_BY_ID_RESPONSE_ERROR,
   GET_ALL_RECIPES_REQUEST,
-  GET_ALL_RECIPES_RESPONSE
+  GET_ALL_RECIPES_RESPONSE,
 } from './recipeAction';
 import { EATING_INPUT_TIME } from './eatingInputTimeAction';
 import { SET_ACTIVE_STEP, SET_PREVIOUS_STEP } from './activeStepAction';
-import { ADD_ALERT_TIMER } from './alertTimersAction';
-
+import { ADD_ALERT_TIMER, CLEAR_ALERT_TIMERS } from './alertTimersAction';
 
 const initialRecipeState = {
   fetching: false,
@@ -66,17 +65,24 @@ export function recipeReducer(state = initialRecipeState, action) {
           { alertTime: action.alertTime, stepName: action.stepName },
         ],
       };
-      case GET_ALL_RECIPES_REQUEST:
+    case CLEAR_ALERT_TIMERS:
       return {
         ...state,
-        fetching: true
+        alertTimers: [],
+        previousStep: null,
+        activeStep: 0,
       };
-      case GET_ALL_RECIPES_RESPONSE:
+    case GET_ALL_RECIPES_REQUEST:
+      return {
+        ...state,
+        fetching: true,
+      };
+    case GET_ALL_RECIPES_RESPONSE:
       return {
         ...state,
         fetching: false,
-        allRecipes: action.payload
-      }
+        allRecipes: action.payload,
+      };
     default:
       return state;
   }
