@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle
-} from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 import { fontGreyPrimary, fontGreySecondary, appBlue } from '../../resources/colors';
 
 const style = {
-    buttonStyling: {
-        textTransform: 'none',
-        color: fontGreySecondary,
-        fontSize: '0.6rem',
-        marginTop: '-2rem'
-    }
-}
+  buttonStyling: {
+    textTransform: 'none',
+    width: '100%',
+    color: fontGreySecondary,
+    marginTop: '5em',
+  },
+};
 
 class CannotFindQR extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   onClick = () => {
