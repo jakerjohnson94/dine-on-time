@@ -62,7 +62,11 @@ export function recipeReducer(state = initialRecipeState, action) {
         ...state,
         alertTimers: [
           ...state.alertTimers,
-          { alertTime: action.alertTime, stepName: action.stepName },
+          {
+            alertTime: action.alertTime,
+            stepName: action.stepName,
+            alertMessage: action.alertMessage,
+          },
         ],
       };
     case CLEAR_ALERT_TIMERS:

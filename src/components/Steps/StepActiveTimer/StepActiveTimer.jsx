@@ -93,12 +93,6 @@ class StepActiveTimer extends Component {
   handleNext = () => {
     this.props.setPreviousStepIndex(this.props.activeStep);
     this.props.setActiveStepIndex(this.props.activeStep + 1);
-    if (this.props.previousStep && this.props.steps[this.props.previousStep].alertTime) {
-      this.props.addAlertTimer(
-        this.props.steps[this.props.previousStep].alertTime,
-        this.props.steps[this.props.previousStep].title
-      );
-    }
   };
   handleNextCompleted = () => {
     history.push('/completed');

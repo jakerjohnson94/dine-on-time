@@ -5,7 +5,9 @@ import AppMenuBar from '../AppMenuBar';
 import { connect } from 'react-redux';
 import AlertTimer from './AlertTimer/AlertTimer';
 import { setActiveStepIndex, setPreviousStepIndex } from '../../redux/activeStepAction';
-
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
 class StepLayout extends Component {
   componentDidMount() {
     this.props.setActiveStepIndex(this.props.activeStep);
@@ -13,11 +15,16 @@ class StepLayout extends Component {
   componentWillUnmount() {}
 
   render() {
+    const alertTimers = this.props.alertTimers.filter(onlyUnique);
     return (
       <Grid>
         <AppMenuBar />
-        {this.props.alertTimers.map(timer => (
-          <AlertTimer title={timer.stepName} key={timer.stepName} minutes={timer.alertTime} />
+        {alertTimers.map(timer => (
+          <AlertTimer
+            title={timer.alertMessage || timer.stepName}
+            key={timer.alertMessage}
+            minutes={timer.alertTime}
+          />
         ))}
         <Grid container style={{ height: '100%', width: '100%' }}>
           <Grid item xs={12}>
