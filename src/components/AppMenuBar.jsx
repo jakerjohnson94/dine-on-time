@@ -1,30 +1,21 @@
 import { appBlue } from '../resources/colors';
 import React, { Component } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  MenuItem,
-  Menu,
-  Icon,
-  Typography,
-  Grid
-} from '@material-ui/core';
+import { AppBar, Toolbar, Button, MenuItem, Menu, Icon, Typography, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import history from '../history';
 
 const style = {
   headerBar: {
-    backgroundColor: appBlue
+    backgroundColor: appBlue,
   },
   headerIcon: {
-    color: 'white'
-  }
+    color: 'white',
+  },
 };
 
 class AppMenuBar extends Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
   };
 
   handleClick = event => {
@@ -47,7 +38,7 @@ class AppMenuBar extends Component {
     const { anchorEl } = this.state;
     return (
       <React.Fragment>
-        <AppBar style={style.headerBar} position="static">
+        <AppBar position="sticky" style={style.headerBar}>
           <Toolbar>
             <Grid justify="space-between" container spacing={24}>
               <Grid item>
@@ -65,11 +56,7 @@ class AppMenuBar extends Component {
                     open={Boolean(anchorEl)}
                     onClose={this.handleClose}
                   >
-                    <MenuItem
-                      to="/"
-                      component={Link}
-                      onClick={this.handleHomeClick}
-                    >
+                    <MenuItem to="/" component={Link} onClick={this.handleHomeClick}>
                       Home
                     </MenuItem>
                   </Menu>
@@ -77,7 +64,12 @@ class AppMenuBar extends Component {
               </Grid>
               <Grid item>
                 <Typography
-                  style={{ flex: 1, color: 'white' , marginTop: '0.4rem', fontFamily: 'Satisfy, cursive'}}
+                  style={{
+                    flex: 1,
+                    color: 'white',
+                    marginTop: '0.4rem',
+                    fontFamily: 'Satisfy, cursive',
+                  }}
                   variant="headline"
                 >
                   Dine On Time

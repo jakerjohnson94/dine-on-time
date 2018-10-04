@@ -1,5 +1,6 @@
 import ProgressBar from 'react-bootstrap/lib/ProgressBar';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './StepActiveTimer.css';
 import audio from '../../../resources/audio/nextStepDing.ogg';
 import {
@@ -11,9 +12,12 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid,
 } from '@material-ui/core';
-
-import { appBlue, fontGreyPrimary } from '../../../resources/colors';
+import { setActiveStepIndex, setPreviousStepIndex } from '../../../redux/activeStepAction';
+import { addAlertTimer } from '../../../redux/alertTimersAction';
+import history from '../../../history';
+import { fontGreyPrimary } from '../../../resources/colors';
 const style = {
   label: {
     float: 'right',
@@ -22,7 +26,7 @@ const style = {
     paddingTop: '1em',
   },
 };
-export default class StepActiveTimer extends Component {
+class StepActiveTimer extends Component {
   state = {
     nextStepDing: new Audio(audio),
     seconds: 0,
@@ -86,6 +90,24 @@ export default class StepActiveTimer extends Component {
     this.handleAlertClose();
     this.setState({ isRunning: false });
   };
+  handleNext = () => {
+    this.props.setPreviousStepIndex(this.props.activeStep);
+    this.props.setActiveStepIndex(this.props.activeStep + 1);
+    if (this.props.previousStep && this.props.steps[this.props.previousStep].alertTime) {
+      this.props.addAlertTimer(
+        this.props.steps[this.props.previousStep].alertTime,
+        this.props.steps[this.props.previousStep].title
+      );
+    }
+  };
+  handleNextCompleted = () => {
+    history.push('/completed');
+  };
+  handlePrevious = () => {
+    if (this.props.steps[this.props.previousStep - 1])
+      this.props.setPreviousStepIndex(this.props.previousStep - 1);
+    this.props.setActiveStepIndex(this.props.activeStep - 1);
+  };
 
   // Run countdown every seconds
   componentDidMount = () => {
@@ -134,7 +156,54 @@ export default class StepActiveTimer extends Component {
         <Button variant="outlined" style={{ marginTop: '1em', padding: '.5em' }}>
           <Icon onClick={this.handlePause}>{this.state.isRunning ? 'pause' : 'play_arrow'}</Icon>
         </Button>
+        <Grid container>
+          <Grid item xs={12}>
+            {this.props.steps[this.props.activeStep - 1] ? (
+              <Button
+                onClick={this.handlePrevious}
+                style={{ textTransform: 'none', float: 'left' }}
+              >
+                Previous
+              </Button>
+            ) : null}
+
+            <Button
+              onClick={
+                this.props.steps[this.props.activeStep + 1]
+                  ? this.handleNext
+                  : this.handleNextCompleted
+              }
+              style={{ textTransform: 'none', float: 'Right' }}
+            >
+              Next
+            </Button>
+          </Grid>
+        </Grid>
       </React.Fragment>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    ...state,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setActiveStepIndex: index => {
+      dispatch(setActiveStepIndex(index));
+    },
+    setPreviousStepIndex: index => {
+      dispatch(setPreviousStepIndex(index));
+    },
+    addAlertTimer: (alertTime, title) => {
+      dispatch(addAlertTimer(alertTime, title));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StepActiveTimer);
