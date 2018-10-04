@@ -57,9 +57,12 @@ class RootLayout extends Component {
               <CardMedia style={{ height: '30em' }} image={infoImg1} title="InfoGraphic" />
               <Typography style={style.appParagraph} variant="body1">
                 Dine On Time was created to be used in association with meal-kit delivery services
-                like Blue Apron, scan your QR code or input the recipe ID to get step by step
-                instructions with timers and alerts. Don't dine alone,{' '}
-                <span style={{ fontWeight: 'bold' }}>Dine On Time!</span>
+                like Blue Apron.
+                <br />
+                Scan your QR code or input the recipe ID to get step by step instructions with
+                timers and alerts.
+                <br />
+                Don't dine alone, <span style={{ fontWeight: 'bold' }}>Dine On Time!</span>
               </Typography>
             </Card>
           </Grid>
