@@ -30,14 +30,18 @@ export default class StepActiveTimer extends Component {
     max: this.props.max * 60,
     showAlert: true,
     alertOpen: false,
+    alerted: false,
   };
 
   // If it's counting down then count down and run next at 00:00 if provided.
   countDown = () => {
     if (!this.isCancelled && this.state.isRunning && this.state.seconds < this.state.max) {
       this.setState({ seconds: this.state.seconds + 1 });
-    } else if (this.state.seconds >= this.state.max) {
+    } else if (this.state.seconds >= this.state.max && !this.state.alerted) {
+      this.state.nextStepDing.play();
+      this.setState({ alerted: true });
       this.setState({ seconds: 0 });
+
       if (this.props.next && !this.isCancelled) {
         return this.props.next();
       }
@@ -94,7 +98,6 @@ export default class StepActiveTimer extends Component {
   };
 
   componentWillUnmount = () => {
-    this.state.nextStepDing.play();
     this.isCancelled = true;
   };
 
