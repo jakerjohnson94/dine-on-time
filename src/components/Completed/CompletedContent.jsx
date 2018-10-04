@@ -60,7 +60,11 @@ class CompletedContent extends Component {
                   {winePairings.map(wine => (
                     <React.Fragment key={wine.name}>
                       <Grid item xs={2}>
-                        <img alt='Recommended wine paring' style={style.wineImg} src={wine.img} />
+                        <img
+                          alt="Recommended beverage paring"
+                          style={style.wineImg}
+                          src={wine.img}
+                        />
                       </Grid>
                       <Grid item xs={4}>
                         <Grid container>
