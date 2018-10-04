@@ -23,7 +23,7 @@ class StepLayout extends Component {
           <AlertTimer
             title={timer.alertMessage || timer.stepName}
             key={timer.alertMessage}
-            minutes={timer.alertTime}
+            minutes={timer.alertTime / 10}
           />
         ))}
         <Grid container style={{ height: '100%', width: '100%' }}>

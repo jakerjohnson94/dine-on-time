@@ -101,7 +101,7 @@ class StepContent extends Component {
                       </CardContent>
                     </Card>
                     <Grid item xs={12} style={style.progressTimer}>
-                      <StepActiveTimer next={this.timerFn} max={step.activeTime / 60} />
+                      <StepActiveTimer next={this.timerFn} max={step.activeTime / 10} />
                     </Grid>
                   </Grid>
                 </Grid>
