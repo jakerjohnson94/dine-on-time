@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Card } from '@material-ui/core';
+import { Grid, Card, AppBar } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { IconButton } from '@material-ui/core/';
 import ClosedIcon from '@material-ui/icons/Close';
@@ -11,6 +11,7 @@ const style = {
     padding: '.1em',
     margin: '.05em',
     minHeight: '2em',
+    backgroundColor: 'white',
   },
 };
 export default class AlertTimer extends Component {
@@ -61,7 +62,7 @@ export default class AlertTimer extends Component {
     return (
       <React.Fragment>
         {!this.state.isClosed ? (
-          <Card id="timer" style={style.card}>
+          <AppBar id="timer" style={style.card} position="sticky">
             <Grid container justify="center" alignItems="center">
               <Grid item xs style={{ textAlign: 'middle' }}>
                 <Typography variant="subheading" className={this.state.alerted ? 'alerted' : null}>
@@ -84,7 +85,7 @@ export default class AlertTimer extends Component {
                 </IconButton>
               </Grid>
             </Grid>
-          </Card>
+          </AppBar>
         ) : null}
       </React.Fragment>
     );

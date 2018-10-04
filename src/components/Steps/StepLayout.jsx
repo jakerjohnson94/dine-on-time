@@ -16,16 +16,13 @@ class StepLayout extends Component {
     return (
       <Grid>
         <AppMenuBar />
+        {this.props.alertTimers.map(timer => (
+          <AlertTimer title={timer.stepName} key={timer.stepName} minutes={timer.alertTime} />
+        ))}
         <Grid container style={{ height: '100%', width: '100%' }}>
           <Grid item xs={12}>
             <Grid container alignItems="center">
-              <Grid item xs={12}>
-                {this.props.alertTimers.map(timer => (
-                  <div key={timer.stepName}>
-                    <AlertTimer title={timer.stepName} minutes={timer.alertTime} />
-                  </div>
-                ))}
-              </Grid>
+              <Grid item xs={12} />
             </Grid>
           </Grid>
           <Grid item xs={12}>
