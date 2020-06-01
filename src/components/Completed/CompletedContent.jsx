@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Typography, Grid, Card, CardMedia, CardContent } from '@material-ui/core';
 import { appBlue, fontGreyPrimary } from '../../resources/colors';
-// import sampleRecipe from './sampleRecipe.json';
 
 const style = {
   instructions: {
@@ -61,7 +60,11 @@ class CompletedContent extends Component {
                   {winePairings.map(wine => (
                     <React.Fragment key={wine.name}>
                       <Grid item xs={2}>
-                        <img alt='Recommended wine paring' style={style.wineImg} src={wine.img} />
+                        <img
+                          alt="Recommended beverage paring"
+                          style={style.wineImg}
+                          src={wine.img}
+                        />
                       </Grid>
                       <Grid item xs={4}>
                         <Grid container>

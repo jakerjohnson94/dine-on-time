@@ -36,12 +36,6 @@ const style = {
 
 class StepContent extends Component {
   timerFn = () => {
-    if (this.props.previousStep && this.props.steps[this.props.previousStep].alertTime) {
-      this.props.addAlertTimer(
-        this.props.steps[this.props.previousStep].alertTime,
-        this.props.steps[this.props.previousStep].title
-      );
-    }
     if (this.props.steps[this.props.activeStep + 1]) {
       this.props.setActiveStepIndex(this.props.activeStep + 1);
     } else {
@@ -50,6 +44,13 @@ class StepContent extends Component {
     }
     if (this.props.steps[this.props.activeStep - 1])
       this.props.setPreviousStepIndex(this.props.activeStep - 1);
+    if (this.props.previousStep && this.props.steps[this.props.previousStep].alertTime) {
+      this.props.addAlertTimer(
+        this.props.steps[this.props.previousStep].alertTime,
+        this.props.steps[this.props.previousStep].stepName,
+        this.props.steps[this.props.previousStep].alertMessage
+      );
+    }
   };
 
   render() {
@@ -100,7 +101,7 @@ class StepContent extends Component {
                       </CardContent>
                     </Card>
                     <Grid item xs={12} style={style.progressTimer}>
-                      <StepActiveTimer next={this.timerFn} max={step.activeTime} />
+                      <StepActiveTimer next={this.timerFn} max={step.activeTime / 10} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -116,7 +117,8 @@ const mapDispatchToProps = dispatch => {
   return {
     setActiveStepIndex: activeStep => dispatch(setActiveStepIndex(activeStep)),
     setPreviousStepIndex: activeStep => dispatch(setPreviousStepIndex(activeStep)),
-    addAlertTimer: (alertTimer, stepName) => dispatch(addAlertTimer(alertTimer, stepName)),
+    addAlertTimer: (alertTimer, stepName, alertMessage) =>
+      dispatch(addAlertTimer(alertTimer, stepName, alertMessage)),
   };
 };
 

@@ -5,6 +5,7 @@ import { Typography, Grid, Hidden, Button } from '@material-ui/core';
 import ResponsiveRootSlider from './ResponsiveSlider';
 //local components
 import SearchDialog from './SearchDialog';
+import CannotFindQR from './CannotFindQR';
 import { connect } from 'react-redux';
 import { fetchAllRecipes } from '../../redux/recipeAction';
 
@@ -38,7 +39,8 @@ const style = {
   titleHeader: {
     marginTop: '.5em',
     marginBottom: '.25em',
-
+    fontFamily: 'Dosis, sans-serif',
+    fontWeight: '500',
     color: appBlue,
   },
   titleSubHeader: {
@@ -71,6 +73,14 @@ const style = {
     display: 'flex',
     flexDirection: 'column',
   },
+  appParagraph: {
+    fontStyle: 'italic',
+    marginLeft: '1.5rem',
+    marginRight: '1.5rem',
+    color: fontGreySecondary,
+    textAlign: 'center',
+    fontSize: '0.7em',
+  },
 };
 
 class RootContent extends Component {
@@ -79,48 +89,47 @@ class RootContent extends Component {
   }
   render() {
     return (
-      <Grid alignItems="center" justify="center" container>
-        <Grid item xs={12} lg={7}>
-          <ResponsiveRootSlider title="Dine on Time" />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography style={style.titleHeader} variant="display2" gutterBottom align="center">
-            Dine on Time
-          </Typography>
-        </Grid>
-
-        {/* <Grid item xs={12}>
-          <Typography style={style.titleSubHeader} variant="display1" gutterBottom align="center">
-            We're With You Every Step Of The Way
-          </Typography>
-        </Grid> */}
-
-        <Hidden lgUp>
-          <Grid item xs style={style.scannerContainer}>
-            <Button component={Link} style={style.scannerButton} to="/scanner">
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                style={style.scannerContainer}
-                alignItems="center"
-              >
-                <Grid item xs={12}>
-                  <img alt="camera icon" src={scanButtonIcon} />
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography style={style.scanText} variant="subheading">
-                    Scan A Recipe Code
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Button>
+      <React.Fragment>
+        <Grid alignItems="center" justify="center" container>
+          <Grid item xs={12} lg={7}>
+            <ResponsiveRootSlider title="Dine on Time" />
           </Grid>
-        </Hidden>
-        <Grid style={style.centerContent} item xs={12}>
-          <SearchDialog text="Search Recipe" />
+          <Grid item xs={12}>
+            <Typography style={style.titleHeader} variant="headline" gutterBottom align="center">
+              We're with you every step of the way!
+            </Typography>
+          </Grid>
+
+          <Hidden lgUp>
+            <Grid item xs style={style.scannerContainer}>
+              <Button component={Link} style={style.scannerButton} to="/scanner">
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  style={style.scannerContainer}
+                  alignItems="center"
+                >
+                  <Grid item xs={12}>
+                    <img alt="camera icon" src={scanButtonIcon} />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography style={style.scanText} variant="subheading">
+                      Scan A Recipe Code
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Button>
+            </Grid>
+          </Hidden>
+          <Grid style={style.centerContent} item xs={12}>
+            <SearchDialog text="Search Recipe" />
+          </Grid>
+          <Grid item xs={12}>
+            <CannotFindQR />
+          </Grid>
         </Grid>
-      </Grid>
+      </React.Fragment>
     );
   }
 }
